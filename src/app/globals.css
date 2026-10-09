@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0f0f0d;
+  --color-bone: #edeae2;
+  --color-acid: #c8f31d;
+  --color-concrete: #cfcabf;
+  --color-stone: #b4afa3;
+  --color-soot: #2a2925;
+  --color-muted: #5a564e;
+  --color-muted-on-ink: #a9a498;
+  --color-error: #9e2a1f;
+
+  --font-display: var(--font-big-shoulders), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+
+  --ease-snap: cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+:root {
+  --ring: var(--color-ink);
+  --header-h: 3.5rem;
+}
+
+html {
+  background: var(--color-bone);
+  color: var(--color-ink);
+  scroll-padding-top: var(--header-h);
+}
+
+body {
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+/* Sections on ink or acid swap the focus ring so it keeps 3:1 against them. */
+.on-ink {
+  --ring: var(--color-acid);
+}
+.on-acid {
+  --ring: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 3px;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.82;
+  letter-spacing: -0.01em;
+}
+
+/* Photocopy grain over the whole page. Part of the brief, kept faint enough
+   that it never moves a contrast ratio in a way you can see. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Intro runs once per session; the inline script in layout sets this flag
+   before first paint so returning visitors never see it flash. */
+html[data-intro-seen] .intro-overlay {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-overlay {
+    display: none;
+  }
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
