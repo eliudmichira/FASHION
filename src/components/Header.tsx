@@ -20,7 +20,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 h-[var(--header-h)] border-b-2 border-ink bg-bone">
       <div className="flex h-full items-center justify-between gap-4 px-4 md:px-6">
-        <Link href="/" className="display flex min-h-11 items-center text-3xl leading-none" aria-label={`${site.name}, home`}>
+        <Link href="/" className="display flex min-h-11 items-center whitespace-nowrap text-2xl leading-none sm:text-3xl" aria-label={`${site.name}, home`}>
           {site.name}
         </Link>
 

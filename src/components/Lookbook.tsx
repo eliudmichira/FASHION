@@ -48,7 +48,7 @@ function LookCard({ index }: { index: number }) {
   const look = looks[index];
   return (
     <figure className="flex w-[min(80vw,24rem)] shrink-0 snap-start flex-col lg:w-[34vh] xl:w-[40vh]">
-      <Placeholder tone={look.tone} code={`DZ/L0${index + 1}`} label={look.title} className="aspect-[3/4]" />
+      <Placeholder tone={look.tone} code={`${site.codePrefix}/L0${index + 1}`} label={look.title} className="aspect-[3/4]" />
       <figcaption className="pt-3">
         <p className="display text-3xl">{look.title}</p>
         <ul className="mt-1">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { site } from "@/data/site";
+import { wordmarkSize } from "@/lib/wordmark";
 
 // Cached at build time; the year only needs to be as fresh as the last deploy.
 async function copyrightYear() {
@@ -29,7 +30,8 @@ export async function Footer() {
       </div>
       <p
         aria-hidden
-        className="display -mb-[0.12em] select-none whitespace-nowrap text-center text-[22.5vw] leading-[0.8]"
+        style={{ fontSize: wordmarkSize(90, 22.5) }}
+        className="display -mb-[0.12em] select-none whitespace-nowrap text-center leading-[0.8]"
       >
         {site.name}
       </p>

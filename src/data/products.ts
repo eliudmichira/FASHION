@@ -1,3 +1,5 @@
+import { site } from "@/data/site";
+
 // Placeholder catalogue. Names, prices and sizes are stand-ins until the real
 // range is ready. Every price ends in 998.
 
@@ -33,7 +35,7 @@ const placeholderDetails = [
 export const products: Product[] = [
   {
     slug: "heavyweight-box-tee",
-    code: "DZ/001",
+    code: `${site.codePrefix}/001`,
     name: "Heavyweight Box Tee",
     category: "Tops",
     price: 2998,
@@ -44,7 +46,7 @@ export const products: Product[] = [
   },
   {
     slug: "slash-hoodie",
-    code: "DZ/002",
+    code: `${site.codePrefix}/002`,
     name: "Slash Hoodie",
     category: "Tops",
     price: 6998,
@@ -55,7 +57,7 @@ export const products: Product[] = [
   },
   {
     slug: "utility-cargo-pant",
-    code: "DZ/003",
+    code: `${site.codePrefix}/003`,
     name: "Utility Cargo Pant",
     category: "Bottoms",
     price: 5998,
@@ -66,7 +68,7 @@ export const products: Product[] = [
   },
   {
     slug: "nylon-track-jacket",
-    code: "DZ/004",
+    code: `${site.codePrefix}/004`,
     name: "Nylon Track Jacket",
     category: "Outerwear",
     price: 7998,
@@ -77,7 +79,7 @@ export const products: Product[] = [
   },
   {
     slug: "washed-long-sleeve",
-    code: "DZ/005",
+    code: `${site.codePrefix}/005`,
     name: "Washed Long Sleeve",
     category: "Tops",
     price: 3998,
@@ -88,7 +90,7 @@ export const products: Product[] = [
   },
   {
     slug: "ripstop-short",
-    code: "DZ/006",
+    code: `${site.codePrefix}/006`,
     name: "Ripstop Short",
     category: "Bottoms",
     price: 3998,
@@ -99,7 +101,7 @@ export const products: Product[] = [
   },
   {
     slug: "panel-bomber",
-    code: "DZ/007",
+    code: `${site.codePrefix}/007`,
     name: "Panel Bomber",
     category: "Outerwear",
     price: 9998,
@@ -110,7 +112,7 @@ export const products: Product[] = [
   },
   {
     slug: "tag-cap",
-    code: "DZ/008",
+    code: `${site.codePrefix}/008`,
     name: "Tag Cap",
     category: "Accessories",
     price: 1998,

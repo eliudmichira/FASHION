@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { Placeholder } from "@/components/Placeholder";
 import { products } from "@/data/products";
 import { site } from "@/data/site";
+import { wordmarkLetters, wordmarkSize } from "@/lib/wordmark";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -24,12 +25,12 @@ export function Hero() {
 
       <motion.h1
         id="hero-title"
-        style={{ scale: markScale, y: markY }}
-        className="display origin-top whitespace-nowrap px-2 pt-2 text-center text-[21.5vw]"
+        style={{ scale: markScale, y: markY, fontSize: wordmarkSize(86, 21.5) }}
+        className="display origin-top whitespace-nowrap px-2 pt-2 text-center"
       >
         <span className="sr-only">{site.name}: unisex streetwear, released in drops</span>
         <span aria-hidden className="flex justify-center">
-          {site.name.split("").map((letter, i) => (
+          {wordmarkLetters.map((letter, i) => (
             <span key={i} className="overflow-hidden pb-[0.04em]">
               <motion.span
                 className="block"
@@ -48,7 +49,7 @@ export function Hero() {
         <motion.div style={{ y: photoY }} className="scale-[1.14]">
           <Placeholder
             tone="soot"
-            code="DZ/C01"
+            code={`${site.codePrefix}/C01`}
             label="Campaign"
             className="aspect-[4/5] p-[7%] sm:aspect-[3/2] lg:aspect-[16/8]"
           />

@@ -40,7 +40,7 @@ export function Placeholder({
             aria-hidden
             className="display pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none text-center text-[clamp(4rem,14vw,11rem)] opacity-15"
           >
-            {code.replace("DZ/", "")}
+            {code.split("/").pop()}
           </span>
           <span aria-hidden className="mt-auto flex w-full items-end justify-between gap-2 p-3 text-xs font-semibold">
             <span className="border border-current px-1.5 py-0.5">{code}</span>

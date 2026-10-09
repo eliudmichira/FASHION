@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { site } from "@/data/site";
+import { wordmarkLetters, wordmarkSize } from "@/lib/wordmark";
 import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
 
 const KEY = "dz-intro";
@@ -57,11 +58,11 @@ export function Intro() {
           exit={{ y: "-100%" }}
           transition={{ duration: 0.7, ease: [0.7, 0, 0.2, 1] }}
         >
-          <div className="display flex text-[clamp(4rem,20vw,18rem)]">
-            {site.name.split("").map((letter, i) => (
+          <div className="display flex" style={{ fontSize: `clamp(3rem, ${wordmarkSize(80, 20)}, 18rem)` }}>
+            {wordmarkLetters.map((letter, i) => (
               <span key={i} className="overflow-hidden">
                 <motion.span
-                  className={`block ${i === site.name.length - 1 ? "text-acid" : ""}`}
+                  className={`block ${i === wordmarkLetters.length - 1 ? "text-acid" : ""}`}
                   initial={{ y: "105%" }}
                   animate={{ y: 0 }}
                   transition={{ delay: 0.1 + i * 0.07, duration: 0.55, ease: [0.2, 0.9, 0.1, 1] }}

@@ -1,4 +1,6 @@
-# DUNCANZZ design direction
+# Design direction
+
+Brand name: not decided yet. The site shows a `BRAND NAME` placeholder (set in `src/data/site.ts`).
 
 Owner's brief (chosen in chat): **Street Kinetic**. Unisex streetwear, prices in KSh, photos to follow (placeholders until then). Bold condensed type, one acid accent, fast snappy motion, marquee tickers, slight grain.
 
@@ -9,7 +11,7 @@ Design Read: e-commerce site for a unisex streetwear label, in a loud condensed-
 ## Identity
 
 - **Personality:** loud, fast, confident. Talks like a shop counter, not a press release.
-- **Motif:** the forward slash. Used as the separator in product codes (`DZ/003`), marquee copy, and section labels. Product codes sit in boxed tags that read like woven garment labels.
+- **Motif:** the forward slash. Used as the separator in product codes (`XX/003`), marquee copy, and section labels. Product codes sit in boxed tags that read like woven garment labels.
 
 ## Palette
 
