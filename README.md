@@ -1,4 +1,4 @@
-# duncanzz.com
+
 
 Storefront for a unisex streetwear label (brand name to be confirmed). Next.js 16, Tailwind 4, Motion and Lenis.
 Design direction lives in [`DESIGN.md`](DESIGN.md).
