@@ -28,10 +28,11 @@ export async function getPaymentStatus(orderId: string) {
 // The functions send shopper-ready messages for the errors a shopper can fix;
 // anything else gets a general one.
 export function paymentErrorMessage(err: unknown): string {
-  const code = (err as { code?: string })?.code ?? "";
+  const rawCode = (err as { code?: string })?.code ?? "";
+  const code = rawCode.replace(/^functions\//, "");
   const message = (err as { message?: string })?.message;
-  const shopperFacing = ["functions/invalid-argument", "functions/resource-exhausted", "functions/unavailable"];
+  const shopperFacing = ["invalid-argument", "resource-exhausted", "unavailable"];
   // The Functions SDK appends the HTTP status ("… [400]"); shoppers don't need it.
   if (shopperFacing.includes(code) && message) return message.replace(/\s*\[\d{3}\]$/, "");
-  return "Checkout isn't working right now. Try again in a few minutes.";
+  return message || "Checkout isn't working right now. Try again in a few minutes.";
 }

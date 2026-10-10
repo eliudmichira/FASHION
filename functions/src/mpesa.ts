@@ -59,13 +59,18 @@ export function clearTokenCache() {
 }
 
 async function accessToken(cfg: MpesaConfig, fetchImpl: Fetch): Promise<string> {
-  const key = `${cfg.env}:${cfg.consumerKey}`;
+  const cKey = cfg.consumerKey.trim();
+  const cSecret = cfg.consumerSecret.trim();
+  const key = `${cfg.env}:${cKey}`;
   if (cachedToken && cachedToken.key === key && cachedToken.expiresAt > Date.now()) return cachedToken.value;
-  const basic = Buffer.from(`${cfg.consumerKey}:${cfg.consumerSecret}`).toString("base64");
+  const basic = Buffer.from(`${cKey}:${cSecret}`).toString("base64");
   const res = await fetchImpl(`${BASE_URL[cfg.env]}/oauth/v1/generate?grant_type=client_credentials`, {
     headers: { Authorization: `Basic ${basic}` },
   });
-  if (!res.ok) throw new Error(`Daraja auth failed: HTTP ${res.status}`);
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`Daraja auth failed: HTTP ${res.status} ${text}`.trim());
+  }
   const body = (await res.json()) as { access_token?: string; expires_in?: string | number };
   if (!body.access_token) throw new Error("Daraja auth returned no token");
   const ttl = Number(body.expires_in ?? 3599) * 1000;
@@ -84,17 +89,19 @@ export type StkPushInput = {
 export async function stkPush(cfg: MpesaConfig, input: StkPushInput, fetchImpl: Fetch = fetch) {
   const token = await accessToken(cfg, fetchImpl);
   const timestamp = darajaTimestamp();
+  const shortcode = cfg.shortcode.trim();
+  const passkey = cfg.passkey.trim();
   const res = await fetchImpl(`${BASE_URL[cfg.env]}/mpesa/stkpush/v1/processrequest`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      BusinessShortCode: cfg.shortcode,
-      Password: stkPassword(cfg.shortcode, cfg.passkey, timestamp),
+      BusinessShortCode: shortcode,
+      Password: stkPassword(shortcode, passkey, timestamp),
       Timestamp: timestamp,
       TransactionType: cfg.transactionType,
       Amount: Math.round(input.amount),
       PartyA: input.phone,
-      PartyB: cfg.partyB,
+      PartyB: cfg.partyB.trim() || shortcode,
       PhoneNumber: input.phone,
       CallBackURL: cfg.callbackUrl,
       AccountReference: input.reference.slice(0, 12),
@@ -124,12 +131,14 @@ export type QueryResult = { state: "pending" } | { state: "paid" } | { state: "f
 export async function stkQuery(cfg: MpesaConfig, checkoutRequestId: string, fetchImpl: Fetch = fetch): Promise<QueryResult> {
   const token = await accessToken(cfg, fetchImpl);
   const timestamp = darajaTimestamp();
+  const shortcode = cfg.shortcode.trim();
+  const passkey = cfg.passkey.trim();
   const res = await fetchImpl(`${BASE_URL[cfg.env]}/mpesa/stkpushquery/v1/query`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      BusinessShortCode: cfg.shortcode,
-      Password: stkPassword(cfg.shortcode, cfg.passkey, timestamp),
+      BusinessShortCode: shortcode,
+      Password: stkPassword(shortcode, passkey, timestamp),
       Timestamp: timestamp,
       CheckoutRequestID: checkoutRequestId,
     }),
