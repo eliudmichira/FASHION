@@ -5,6 +5,7 @@ export const site = {
   // Prefix on product codes (XX/001). Placeholder; usually the brand's initials.
   codePrefix: "XX",
   domain: "duncanzz.com",
+  instagram: "https://www.instagram.com/classofinfinitty",
   // Shows the "placeholder content" strip across the site. Set to false once
   // real photos, products and the drop date are in.
   preview: true,

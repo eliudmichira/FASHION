@@ -23,6 +23,14 @@ export async function Footer() {
           <Link href="/#lookbook" className="flex min-h-11 min-w-11 items-center font-semibold hover:text-acid">
             Lookbook
           </Link>
+          <a
+            href={site.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-h-11 min-w-11 items-center font-semibold hover:text-acid"
+          >
+            Instagram<span className="sr-only"> (opens in a new tab)</span>
+          </a>
         </nav>
         <p className="text-sm text-muted-on-ink">
           © {year} {site.name} / {site.domain}

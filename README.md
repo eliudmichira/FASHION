@@ -39,4 +39,5 @@ The bag is a slide-out drawer, saved in the visitor's browser.
 - [ ] Connect checkout (Shopify) in `src/components/CartDrawer.tsx`
 - [ ] Connect the waitlist to an email provider in `src/app/api/waitlist/route.ts`
 - [ ] Privacy policy and terms pages (needed once you collect emails and payments)
-- [ ] Instagram and TikTok links in the footer
+- [x] Instagram link in the footer
+- [ ] TikTok link in the footer
