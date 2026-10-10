@@ -69,6 +69,16 @@ export const products: Product[] = [
         focus: "50% 45%",
       },
       {
+        src: "/images/products/night-dweller-baby-tee-flat-front.webp",
+        alt: "The black Night Dweller Baby Tee on its own, front view, with the white Skele print",
+        label: "Front, flat",
+      },
+      {
+        src: "/images/products/night-dweller-baby-tee-flat-back.webp",
+        alt: "The black Night Dweller Baby Tee on its own, back view, with the white Classofinfinitty mark",
+        label: "Back, flat",
+      },
+      {
         src: "/images/products/night-dweller-baby-tee-front-print.jpg",
         alt: "Close-up of the Skele print on the front",
         label: "Front print",
@@ -177,6 +187,26 @@ const nightDweller = products[0];
 export const looks: Look[] = [
   { id: "look-01", title: "Look 01", tone: "ash", photo: nightDweller.photos![1], productSlugs: [nightDweller.slug] },
   { id: "look-02", title: "Look 02", tone: "ash", photo: nightDweller.photos![0], productSlugs: [nightDweller.slug] },
-  { id: "look-03", title: "Look 03", tone: "graphite", productSlugs: ["heavyweight-hoodie", "utility-cargo-pant"] },
-  { id: "look-04", title: "Look 04", tone: "ash", productSlugs: ["panel-bomber", "tag-cap"] },
+  {
+    id: "look-03",
+    title: "Look 03",
+    tone: "graphite",
+    photo: {
+      src: "/images/looks/night-dweller-back.webp",
+      alt: "The Night Dweller Baby Tee from behind, worn cropped with low-rise blue jeans, the Classofinfinitty mark across the back",
+      label: "Look 03",
+    },
+    productSlugs: [nightDweller.slug],
+  },
+  {
+    id: "look-04",
+    title: "Look 04",
+    tone: "ash",
+    photo: {
+      src: "/images/looks/night-dweller-front.webp",
+      alt: "The Night Dweller Baby Tee worn cropped with low-rise blue jeans, the Skele print on the front",
+      label: "Look 04",
+    },
+    productSlugs: [nightDweller.slug],
+  },
 ];

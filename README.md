@@ -37,7 +37,8 @@ The bag is a slide-out drawer, saved in the visitor's browser.
 - **Logo:** `src/components/Logo.tsx` (site) and `src/app/icon.svg` (browser tab), both drawn from the same vector.
 - **Drop names and the Drop 02 date:** `src/data/site.ts`.
 - **Placeholder strip:** set `preview: false` in `src/data/site.ts` once real content is in.
-- **Photos:** put shots in `public/images/products/` and list them under `photos` for the product in `src/data/products.ts` (main view, then the hover view). Products without photos show a labelled placeholder.
+- **Photos:** put shots in `public/images/products/` and list them under `photos` for the product in `src/data/products.ts` (main view, then the hover view, then any extras for the product page). Products without photos show a labelled placeholder.
+- **Lookbook:** put shots in `public/images/looks/` and give each look in `looks` (bottom of `src/data/products.ts`) a `photo` and the pieces it links to.
 - **Colours and fonts:** `src/app/globals.css` (`@theme`) and `src/app/layout.tsx`.
 
 ## M-Pesa payments
