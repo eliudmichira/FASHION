@@ -1,4 +1,4 @@
-# duncanzz.com
+
 
 Storefront for Classofinfinitty, a unisex streetwear label. Next.js 16, Tailwind 4, Motion and Lenis.
 Design direction lives in [`DESIGN.md`](DESIGN.md).
