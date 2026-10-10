@@ -115,8 +115,9 @@ Safaricom is faked).
 ## Before launch
 
 - [x] Photos and description for #001 Night Dweller Baby Tee (front, back, both prints)
-- [ ] Photos for the other six pieces, or remove them
-- [ ] Real names for the other six pieces, and the [bracketed] facts in their draft descriptions
+- [ ] Photos for #002 Night Dweller Tee (the men's regular fit), plus its model's name, height and size
+- [ ] Photos for #003 to #008, or remove them
+- [ ] Real names for #003 to #008, and the [bracketed] facts in every draft description
 - [ ] Fabric and care details for every piece
 - [ ] Real Drop 02 date
 - [ ] M-Pesa checkout: Daraja keys, deploy, then switch on (see **M-Pesa payments** below)

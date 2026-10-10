@@ -1,8 +1,9 @@
 import { site } from "./site";
 
-// #001 is a real piece with real photos and the owner's own copy. The rest are
-// stand-ins until the range is ready: their descriptions are drafts in the
-// brand voice, with [brackets] where a real fact is still needed.
+// #001 is a real piece with real photos and the owner's own copy. #002 is the
+// regular-fit version of it, waiting on its photos and model details. The rest
+// are stand-ins until the range is ready. Draft descriptions are in the brand
+// voice, with [brackets] where a real fact is still needed.
 // Every price ends in 998.
 
 export type Category = "Tops" | "Bottoms" | "Outerwear" | "Accessories";
@@ -101,8 +102,24 @@ export const products: Product[] = [
     ],
   },
   {
-    slug: "utility-cargo-pant",
+    slug: "night-dweller-tee",
     code: code(2),
+    name: "Night Dweller Tee",
+    category: "Tops",
+    price: 2998,
+    sizes: apparelSizes(),
+    tones: ["ash", "graphite"],
+    description:
+      "[Model] ([height]) is modeling a sz [size] regular-fit, short-sleeved tee with the same vintage Skele print to scare the normies off. Same clean classofinfinitty back hit, cut straight for the night dwellers who don't do cropped. Enjoy!",
+    details: [
+      { title: "Fabric", body: "[Fabric, weight and origin]" },
+      { title: "Fit", body: "Regular fit, short-sleeved. [Model measurements and size]" },
+      { title: "Care", body: "[Washing and care instructions]" },
+    ],
+  },
+  {
+    slug: "utility-cargo-pant",
+    code: code(3),
     name: "Utility Cargo Pant",
     category: "Bottoms",
     price: 5998,
@@ -114,7 +131,7 @@ export const products: Product[] = [
   },
   {
     slug: "heavyweight-hoodie",
-    code: code(3),
+    code: code(4),
     name: "Heavyweight Hoodie",
     category: "Tops",
     price: 6998,
@@ -126,7 +143,7 @@ export const products: Product[] = [
   },
   {
     slug: "nylon-track-jacket",
-    code: code(4),
+    code: code(5),
     name: "Nylon Track Jacket",
     category: "Outerwear",
     price: 7998,
@@ -138,7 +155,7 @@ export const products: Product[] = [
   },
   {
     slug: "ripstop-short",
-    code: code(5),
+    code: code(6),
     name: "Ripstop Short",
     category: "Bottoms",
     price: 3998,
@@ -150,7 +167,7 @@ export const products: Product[] = [
   },
   {
     slug: "panel-bomber",
-    code: code(6),
+    code: code(7),
     name: "Panel Bomber",
     category: "Outerwear",
     price: 9998,
@@ -162,7 +179,7 @@ export const products: Product[] = [
   },
   {
     slug: "tag-cap",
-    code: code(7),
+    code: code(8),
     name: "Tag Cap",
     category: "Accessories",
     price: 1998,
