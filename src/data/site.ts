@@ -16,7 +16,7 @@ export const site = {
   payments: {
     // Turn on once the M-Pesa functions are deployed and their secrets are set
     // (see README). Until then the bag shows "Checkout coming soon".
-    mpesa: false,
+    mpesa: true,
     // Must match setGlobalOptions({ region }) in functions/src/index.ts.
     region: "europe-west1",
   },
