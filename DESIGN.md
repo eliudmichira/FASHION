@@ -1,50 +1,59 @@
 # Design direction
 
-Brand name: **Classofinfinitty** (set in `src/data/site.ts`). Domain: duncanzz.com.
+Brand: **Classofinfinitty** (set in `src/data/site.ts`). Domain: duncanzz.com. Tagline: **Nothing But The Best** (owner approved).
 
-Owner's brief (chosen in chat): **Street Kinetic**. Unisex streetwear, prices in KSh, photos to follow (placeholders until then). Bold condensed type, one acid accent, fast snappy motion, marquee tickers, slight grain.
+Owner's brief: the logo plus the first two pieces (the Mark back-print baby tee and the 8-Ball Skull baby tee). Unisex, all sizes, prices in KSh ending in 998.
 
-Dial: ENERGY 3 / RHYTHM 3 / MOTION 3
+Dial: ENERGY 2 / RHYTHM 3 / MOTION 3
 
-Design Read: e-commerce site for a unisex streetwear label, in a loud condensed-type, drop-driven style, dial ENERGY 3 / RHYTHM 3 / MOTION 3.
+Design Read: e-commerce site for a unisex streetwear label with a punk and tattoo edge, in a cold, strictly monochrome gallery style built on the logo's pixel grid, dial ENERGY 2 / RHYTHM 3 / MOTION 3.
+
+## What the brand gives off
+
+- **Cold and digital:** smooth, almost rendered model shots against a cool grey-lilac studio; black fitted baby tees carrying one big white graphic.
+- **Punk and tattoo:** the spiked skull with the 8-ball eye, piercings, script tattoos.
+- The site is the quiet gallery; the clothes bring the noise.
 
 ## Identity
 
-- **Personality:** loud, fast, confident. Talks like a shop counter, not a press release.
-- **Motif:** the forward slash. Used as the separator in product codes (`XX/003`), marquee copy, and section labels. Product codes sit in boxed tags that read like woven garment labels.
+- **Logo:** a stepped "#" outline over two rings, one even 31-unit line on a square grid. Redrawn as a vector in `src/components/Logo.tsx` and `src/app/icon.svg`. Reads as a hashtag/number sign, the split O's of infinity, and a small face.
+- **Motif:** the mark itself. Product codes read `#001`; the ticker uses the mark as its separator; the bag counter and cursor are its rings.
 
-## Palette
+## Palette (strictly black and white)
 
 | Token | Hex | Role |
 |---|---|---|
-| ink | `#0F0F0D` | Type, dark sections, primary buttons |
-| bone | `#EDEAE2` | Page base. Warmer than white so it reads as paper, not a screen |
-| acid | `#C8F31D` | The one accent: Drop 02 section, bag count. Never text on bone |
-| concrete | `#CFCABF` | Placeholder photo tone only |
-| muted | `#5A564E` | Secondary text on bone only (6.07:1). Fails on concrete, never used there |
-| error | `#9E2A1F` | Form errors, always paired with text |
+| void | `#0C0C10` | Page base, sampled from the tee. The logo lives on black, so the dark site is a brand decision |
+| chalk | `#FFFFFF` | Type and lines, same as the logo |
+| studio | `#D4D6E2` | Photo tiles and inverted panels (drop block, bag, mobile menu). Matches the studio backdrop so photos have no visible edge |
+| fog | `#B4B7C6` | Placeholder tone only |
+| graphite | `#1E1E25` | Placeholder tone only |
+| dim | `#9A9AA6` | Secondary text on void |
+| dim-studio | `#4A4B55` | Secondary text on studio or white |
 
-Contrast (checked with antislop `contrast-check.py`): ink/bone 15.96, ink/acid 14.89, muted/bone 6.07, `#A9A498` on ink 7.72.
+No colour accent. The accent is **inversion**: the Drop 02 block, bag drawer and mobile menu flip to grey with black type, and buttons flip on hover.
+
+Contrast (antislop `contrast-check.py`): chalk/void 19.52, dim/void 7.02, void/studio 13.49, dim-studio/studio 5.98, dim-studio/white 8.65. Never chalk text on studio (1.45).
 
 ## Type
 
-- **Display:** Big Shoulders, 800 and 900, uppercase, tight tracking. Condensed signage type that fits huge words across a phone screen, which is what this direction needs.
-- **Body:** Archivo. A sturdy grotesk with workwear proportions that stays readable at small sizes next to a loud display face.
-- No wide-tracked uppercase labels. Small labels use normal tracking.
+- **Display: Tiny5.** Square pixel face; its right-angle steps match the logo's grid, and it is narrow enough for the 16-letter name. Headings only.
+- **Script: Jacquarda Bastarda 9.** Pixel blackletter that echoes the tattoo lettering. Used only for "Nothing But The Best".
+- **Body: Archivo.** Plain, readable sans. Prices use it too, so numbers are never ambiguous.
+- Lines and borders are 2px; the header mark is sized so its own line is about 2px.
 
 ## Motion (each with its job)
 
-- **Intro (once per session):** wordmark letters rise, panel lifts. Brand moment before the first drop. Skippable, skipped entirely with reduced motion.
-- **Hero wordmark:** shrinks and drifts on scroll, so the brand hands off to the content.
-- **Velocity marquee:** speed and direction follow the scroll. Carries drop info and the slash motif.
-- **Pinned lookbook:** vertical scroll drives a horizontal strip on wide screens; native swipe on phones.
-- **Product hover:** second photo swaps in, "View" cursor on mouse devices. Touch goes straight to the product.
-- **Add to bag:** count bumps, drawer slides in. Confirms the action.
-- **Page change:** ink panel wipes off. Marks the route change with the same panel as the intro.
-- `prefers-reduced-motion` turns off the intro, smooth scroll, marquee movement, pinning, and the wipe.
+- **Intro (once per session):** the logo outline draws on in hard steps, the rings blink once, then the screen dissolves into the page as a grid of pixels. Skippable, off with reduced motion.
+- **Hero:** the mark steps back as you scroll and the photo drifts, handing the screen to the product.
+- **Velocity ticker:** speed and direction follow the scroll; black and white with the mark between phrases.
+- **Pinned lookbook:** vertical scroll drives the strip sideways on wide screens; swipe on phones.
+- **Product hover:** the second view (the back, or a close-up of the print) wipes up over the first. A ring cursor with "View" inverts whatever is under it.
+- **Page change:** a grid of black pixels blinks out to reveal the new page.
+- `prefers-reduced-motion` turns off the intro, smooth scroll, ticker movement, pinning and the pixel dissolve.
 
 ## Layout
 
-- Fixed bone/ink brand palette, no theme toggle: the label's colours are the identity, and ink sections are a brand choice, not a "dark mode".
-- Sections deliberately differ: full-bleed hero, ink marquee band, pinned horizontal lookbook, asymmetric product grid, acid drop block.
-- Radius: 0 everywhere except the bag count badge (round, because it is a counter).
+- Sections deliberately differ: split hero (mark and photo), ticker band, pinned lookbook, asymmetric New in grid, scroll-lit statement, inverted Drop 02 block.
+- Radius 0 everywhere except the logo-ring elements (bag counter, cursor).
+- No grain: the shots are clean; texture lives in the prints.

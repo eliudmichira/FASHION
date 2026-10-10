@@ -1,25 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { useReducedMotion } from "motion/react";
+import { PixelGrid } from "@/components/PixelGrid";
 
 let firstLoad = true;
 
-// Ink panel lifting off the new page. Skipped on the first load (the intro
-// covers that) so content is never hidden behind a panel waiting for JS.
+// On a page change the new page appears through a grid of dissolving black
+// pixels. Skipped on the first load (the intro covers that) so content is never
+// hidden behind cells waiting for JS, and skipped for reduced motion.
 export function PageWipe() {
+  const reduce = useReducedMotion();
   const [play] = useState(() => !firstLoad);
+  const [done, setDone] = useState(false);
   useEffect(() => {
     firstLoad = false;
   }, []);
-  if (!play) return null;
-  return (
-    <motion.div
-      aria-hidden
-      className="pointer-events-none fixed inset-0 z-[45] origin-top bg-ink"
-      initial={{ scaleY: 1 }}
-      animate={{ scaleY: 0 }}
-      transition={{ duration: 0.55, ease: [0.7, 0, 0.2, 1] }}
-    />
-  );
+  if (!play || reduce || done) return null;
+  return <PixelGrid className="z-[45]" spread={0.4} onDone={() => setDone(true)} />;
 }

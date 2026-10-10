@@ -40,7 +40,7 @@ export function WaitlistForm() {
 
   if (state.kind === "done") {
     return (
-      <div role="status" className="border-2 border-ink p-4">
+      <div role="status" className="border-2 border-void p-4">
         <p className="display text-5xl">You&apos;re on the list.</p>
         <p className="mt-2">We&apos;ll email {email.trim()} before {site.nextDrop.name} opens.</p>
         {!state.stored && (
@@ -70,18 +70,18 @@ export function WaitlistForm() {
           onChange={(e) => setEmail(e.target.value)}
           aria-invalid={error ? true : undefined}
           aria-describedby={error ? `${id}-error` : undefined}
-          className="min-h-12 flex-1 border-2 border-ink bg-bone px-4 text-ink placeholder:text-muted"
+          className="min-h-12 flex-1 border-2 border-void bg-chalk px-4 text-void placeholder:text-dim-studio"
         />
         <button
           type="submit"
           disabled={state.kind === "sending"}
-          className="min-h-12 bg-ink px-6 font-semibold text-bone hover:bg-soot disabled:opacity-70"
+          className="min-h-12 border-2 border-void bg-void px-6 font-semibold text-chalk hover:bg-chalk hover:text-void disabled:opacity-70"
         >
           {state.kind === "sending" ? "Joining…" : `Get ${site.nextDrop.name} first`}
         </button>
       </div>
       {error && (
-        <p id={`${id}-error`} role="alert" className="mt-2 bg-ink px-3 py-2 text-sm font-semibold text-bone">
+        <p id={`${id}-error`} role="alert" className="mt-2 bg-void px-3 py-2 text-sm font-semibold text-chalk">
           {error}
         </p>
       )}

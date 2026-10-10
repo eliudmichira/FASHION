@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { Placeholder } from "@/components/Placeholder";
+import { Photo, Placeholder } from "@/components/Placeholder";
 import { getProduct, looks } from "@/data/products";
 import { site } from "@/data/site";
 import { formatKsh } from "@/lib/format";
@@ -24,7 +24,7 @@ export function Lookbook() {
   }, []);
 
   return (
-    <section id="lookbook" aria-labelledby="lookbook-title" className="on-ink scroll-mt-0 bg-ink text-bone">
+    <section id="lookbook" aria-labelledby="lookbook-title" className="scroll-mt-0 border-b-2 border-chalk bg-void text-chalk">
       {pinned ? <PinnedTrack /> : <SwipeTrack />}
     </section>
   );
@@ -33,11 +33,11 @@ export function Lookbook() {
 function Intro() {
   return (
     <div className="flex w-[min(85vw,26rem)] shrink-0 flex-col justify-end lg:w-[32rem]">
-      <p className="text-sm font-semibold text-muted-on-ink">{site.currentDrop} / Lookbook</p>
+      <p className="text-sm font-semibold text-dim">{site.currentDrop} / Lookbook</p>
       <h2 id="lookbook-title" className="display mt-2 text-[clamp(4.5rem,11vw,10rem)]">
-        Worn <span className="text-acid">loud.</span>
+        Worn loud.
       </h2>
-      <p className="mt-4 max-w-xs text-muted-on-ink">
+      <p className="mt-4 max-w-xs text-dim">
         {looks.length} looks from {site.currentDrop}. Every piece is linked, so you can shop straight off the outfit.
       </p>
     </div>
@@ -48,7 +48,11 @@ function LookCard({ index }: { index: number }) {
   const look = looks[index];
   return (
     <figure className="flex w-[min(80vw,24rem)] shrink-0 snap-start flex-col lg:w-[34vh] xl:w-[40vh]">
-      <Placeholder tone={look.tone} code={`${site.codePrefix}/L0${index + 1}`} label={look.title} className="aspect-[3/4]" />
+      {look.photo ? (
+        <Photo photo={look.photo} sizes="(min-width: 1024px) 40vh, 80vw" className="aspect-[3/4]" />
+      ) : (
+        <Placeholder tone={look.tone} code={`${site.codePrefix}L0${index + 1}`} label={look.title} className="aspect-[3/4]" />
+      )}
       <figcaption className="pt-3">
         <p className="display text-3xl">{look.title}</p>
         <ul className="mt-1">
@@ -59,10 +63,10 @@ function LookCard({ index }: { index: number }) {
               <li key={slug}>
                 <Link
                   href={`/product/${slug}`}
-                  className="flex min-h-11 items-center justify-between gap-3 border-b border-bone/25 hover:text-acid"
+                  className="flex min-h-11 items-center justify-between gap-3 border-b border-chalk/30 hover:underline"
                 >
                   <span>{p.name}</span>
-                  <span className="text-muted-on-ink">{formatKsh(p.price)}</span>
+                  <span className="text-dim">{formatKsh(p.price)}</span>
                 </Link>
               </li>
             );
@@ -118,8 +122,8 @@ function PinnedTrack() {
             <LookCard key={look.id} index={i} />
           ))}
         </motion.div>
-        <div className="mx-6 mt-8 h-0.5 bg-bone/20">
-          <motion.div className="h-full bg-acid" style={{ width: progress }} />
+        <div className="mx-6 mt-8 h-0.5 bg-chalk/20">
+          <motion.div className="h-full bg-chalk" style={{ width: progress }} />
         </div>
       </div>
     </div>

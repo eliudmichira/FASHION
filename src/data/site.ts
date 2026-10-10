@@ -2,8 +2,9 @@ export const site = {
   // Shows in the wordmark, header, footer, marquee and page titles.
   // Display type is uppercased by CSS; wordmarks resize to fit the length.
   name: "Classofinfinitty",
-  // Prefix on product codes (XX/001). Placeholder; usually the brand's initials.
-  codePrefix: "XX",
+  tagline: "Nothing But The Best",
+  // Product codes read #001, #002: the "#" is the logo's own shape.
+  codePrefix: "#",
   domain: "duncanzz.com",
   instagram: "https://www.instagram.com/classofinfinitty",
   // Shows the "placeholder content" strip across the site. Set to false once

@@ -52,7 +52,7 @@ export function Countdown({ opensAt }: { opensAt: string }) {
   return (
     <div role="timer" aria-label="Time until the drop opens" className="grid grid-cols-4 gap-2 md:gap-4">
       {units.map((u) => (
-        <div key={u.label} className="border-2 border-ink p-2 md:p-4">
+        <div key={u.label} className="border-2 border-void p-2 md:p-4">
           <span className="display block text-[clamp(3rem,10vw,8rem)] tabular-nums">
             {at === null ? "--" : String(u.value).padStart(2, "0")}
           </span>

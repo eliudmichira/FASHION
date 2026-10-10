@@ -13,9 +13,9 @@ const opens = new Intl.DateTimeFormat("en-KE", {
 
 export function DropSection() {
   return (
-    <section id="drop" aria-labelledby="drop-title" className="on-acid bg-acid px-4 py-16 text-ink md:px-6 md:py-24">
+    <section id="drop" aria-labelledby="drop-title" className="on-studio bg-studio px-4 py-16 text-void md:px-6 md:py-24">
       <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-        <h2 id="drop-title" className="display text-[clamp(5rem,20vw,16rem)]">
+        <h2 id="drop-title" className="display text-[clamp(3.5rem,14vw,12rem)]">
           {site.nextDrop.name}
         </h2>
         <p className="max-w-xs pb-2 font-semibold md:text-right">

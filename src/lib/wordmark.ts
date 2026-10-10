@@ -5,6 +5,3 @@ import { site } from "@/data/site";
 export function wordmarkSize(widthVw: number, maxVw: number) {
   return `${Math.min(maxVw, (widthVw * 2) / site.name.length)}vw`;
 }
-
-// Letters for per-letter animation, with spaces kept visible.
-export const wordmarkLetters = site.name.split("").map((l) => (l === " " ? "\u00a0" : l));

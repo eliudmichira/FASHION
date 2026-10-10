@@ -25,16 +25,19 @@ The bag is a slide-out drawer, saved in the visitor's browser.
 ## Where to change things
 
 - **Products and prices:** `src/data/products.ts`. Keep every price ending in 998.
-- **Brand name and product code prefix:** `name` and `codePrefix` in `src/data/site.ts` (the `XX` code prefix is still a placeholder).
+- **Brand name, tagline and code prefix:** `name`, `tagline` and `codePrefix` in `src/data/site.ts`.
+- **Logo:** `src/components/Logo.tsx` (site) and `src/app/icon.svg` (browser tab), both drawn from the same vector.
 - **Drop names and the Drop 02 date:** `src/data/site.ts`.
 - **Placeholder strip:** set `preview: false` in `src/data/site.ts` once real content is in.
-- **Photos:** each grey block is a `<Placeholder>`. Swap it for `next/image` with the real shot.
+- **Photos:** put shots in `public/images/products/` and list them under `photos` for the product in `src/data/products.ts` (main view, then the hover view). Products without photos show a labelled placeholder.
 - **Colours and fonts:** `src/app/globals.css` (`@theme`) and `src/app/layout.tsx`.
 
 ## Before launch
 
-- [ ] Product photos, lookbook shots and campaign image
-- [ ] Real product names, descriptions, fabric, fit and care copy
+- [x] Photos for #001 Mark Baby Tee and #002 8-Ball Skull Baby Tee
+- [ ] Second views (front of #001, back of #002) to replace the print close-ups
+- [ ] Photos for the other six pieces, or remove them
+- [ ] Real names and copy for the other six pieces; fabric, fit and care for all
 - [ ] Real Drop 02 date
 - [ ] Connect checkout (Shopify) in `src/components/CartDrawer.tsx`
 - [ ] Connect the waitlist to an email provider in `src/app/api/waitlist/route.ts`

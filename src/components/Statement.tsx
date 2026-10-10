@@ -3,21 +3,30 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
 
-// Words darken as they cross the screen, so the line reads at scroll pace.
-export function Statement({ text }: { text: string }) {
+// Words switch on as they cross the screen, so the line reads at scroll pace.
+// The closing line is set in the blackletter face.
+export function Statement({ text, closer }: { text: string; closer: string }) {
   const ref = useRef<HTMLParagraphElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.85", "end 0.45"] });
   const words = text.split(" ");
+  const steps = words.length + 1;
   return (
-    <section aria-label="What we make" className="px-4 py-24 md:px-6 md:py-40">
-      <p ref={ref} className="display max-w-[14ch] text-[clamp(3.5rem,12vw,11rem)]">
-        <span className="sr-only">{text}</span>
-        <span aria-hidden>
+    <section aria-label="What we make" className="px-4 py-24 md:px-6 md:py-36">
+      <p ref={ref}>
+        <span className="sr-only">
+          {text} {closer}
+        </span>
+        <span aria-hidden className="display block max-w-[11ch] text-[clamp(3rem,10vw,9rem)]">
           {words.map((word, i) => (
-            <Word key={i} progress={scrollYProgress} range={[i / words.length, (i + 1) / words.length]}>
+            <Word key={i} progress={scrollYProgress} range={[i / steps, (i + 1) / steps]}>
               {word}
             </Word>
           ))}
+        </span>
+        <span aria-hidden className="script mt-4 block text-[clamp(2.5rem,8vw,7rem)]">
+          <Word progress={scrollYProgress} range={[(steps - 1) / steps, 1]}>
+            {closer}
+          </Word>
         </span>
       </p>
     </section>

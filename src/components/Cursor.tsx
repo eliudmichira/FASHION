@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 
-// "View" disc that follows the mouse over anything tagged data-cursor.
+// A ring, like the two in the logo, with "View" inside. It follows the mouse
+// over anything tagged data-cursor and blends in difference mode, so it inverts
+// whatever is under it and stays visible on black tees and grey backdrops.
 // Mouse devices only: touch users tap straight through to the product.
 export function Cursor() {
   const [label, setLabel] = useState<string | null>(null);
@@ -45,7 +47,7 @@ export function Cursor() {
   return (
     <motion.div
       aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-[65] grid h-24 w-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-acid text-sm font-bold text-ink"
+      className="pointer-events-none fixed left-0 top-0 z-[65] grid h-24 w-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-[6px] border-chalk text-sm font-bold text-chalk mix-blend-difference"
       style={{ x: sx, y: sy }}
       initial={false}
       animate={{ scale: label ? 1 : 0 }}

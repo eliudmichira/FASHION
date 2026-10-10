@@ -18,7 +18,7 @@ export function ShopGrid() {
 
   return (
     <>
-      <div className="flex flex-col gap-4 border-b-2 border-ink pb-4 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col gap-4 border-b-2 border-chalk pb-4 lg:flex-row lg:items-center lg:justify-between">
         <Filter label="Category" options={["All", ...categories]} value={category} onChange={(v) => setCategory(v as Category | "All")} />
         <Filter
           label="In stock in"
@@ -28,7 +28,7 @@ export function ShopGrid() {
         />
       </div>
 
-      <p aria-live="polite" className="mt-4 text-sm text-muted">
+      <p aria-live="polite" className="mt-4 text-sm text-dim">
         {shown.length} {shown.length === 1 ? "piece" : "pieces"}
         {size ? `, size ${size} in stock` : ""}
       </p>
@@ -36,7 +36,7 @@ export function ShopGrid() {
       {shown.length === 0 ? (
         <div className="py-20">
           <p className="display text-6xl md:text-8xl">Nothing here in {size}.</p>
-          <p className="mt-3 text-muted">
+          <p className="mt-3 text-dim">
             {category === "All" ? "Every piece" : `Every ${category.toLowerCase()} piece`} is out in that size right now.
           </p>
           <button
@@ -45,7 +45,7 @@ export function ShopGrid() {
               setCategory("All");
               setSize(null);
             }}
-            className="mt-6 min-h-12 bg-ink px-5 font-semibold text-bone"
+            className="mt-6 min-h-12 px-5 font-semibold border-2 border-chalk bg-chalk text-void hover:bg-void hover:text-chalk"
           >
             Clear filters
           </button>
@@ -83,7 +83,7 @@ function Filter({
           type="button"
           aria-pressed={value === o}
           onClick={() => onChange(o)}
-          className="min-h-11 min-w-11 border-2 border-ink px-3 font-semibold hover:bg-ink/10 aria-pressed:bg-ink aria-pressed:text-bone"
+          className="min-h-11 min-w-11 border-2 border-chalk px-3 font-semibold hover:bg-chalk/10 aria-pressed:bg-chalk aria-pressed:text-void"
         >
           {o}
         </button>

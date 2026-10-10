@@ -1,15 +1,21 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { motion, steps } from "motion/react";
+import { LOGO_HOLE, LOGO_OUTLINE, LOGO_RING_R, LOGO_RINGS, LOGO_STROKE, LOGO_VIEWBOX } from "@/components/Logo";
+import { PixelGrid } from "@/components/PixelGrid";
 import { site } from "@/data/site";
-import { wordmarkLetters, wordmarkSize } from "@/lib/wordmark";
 import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
 
 const KEY = "dz-intro";
+// Stepped easing so the outline draws in hard increments, like pixels lighting.
+const draw = steps(14);
+
+// "mark": the logo draws and blinks. "out": the screen dissolves into the page.
+type Phase = "mark" | "out" | "done";
 
 export function Intro() {
-  const [show, setShow] = useState(true);
+  const [phase, setPhase] = useState<Phase>("mark");
   const locked = useRef(false);
 
   function release() {
@@ -29,12 +35,12 @@ export function Intro() {
     if (seen || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     lockScroll();
     locked.current = true;
-    const done = window.setTimeout(() => setShow(false), 1900);
-    const skip = () => setShow(false);
+    const out = window.setTimeout(() => setPhase("out"), 1700);
+    const skip = () => setPhase((p) => (p === "mark" ? "out" : p));
     window.addEventListener("keydown", skip, { once: true });
     window.addEventListener("pointerdown", skip, { once: true });
     return () => {
-      window.clearTimeout(done);
+      window.clearTimeout(out);
       window.removeEventListener("keydown", skip);
       window.removeEventListener("pointerdown", skip);
       release();
@@ -42,46 +48,69 @@ export function Intro() {
   }, []);
 
   useEffect(() => {
-    if (show) return;
+    if (phase === "mark") return;
     release();
     try {
       sessionStorage.setItem(KEY, "1");
     } catch {}
-  }, [show]);
+  }, [phase]);
+
+  if (phase === "done") return null;
+
+  if (phase === "out") {
+    return <PixelGrid className="intro-overlay z-[70]" spread={0.5} onDone={() => setPhase("done")} />;
+  }
 
   return (
-    <AnimatePresence>
-      {show && (
-        <motion.div
-          aria-hidden
-          className="intro-overlay on-ink fixed inset-0 z-[70] grid place-items-center overflow-hidden bg-ink text-bone"
-          exit={{ y: "-100%" }}
-          transition={{ duration: 0.7, ease: [0.7, 0, 0.2, 1] }}
-        >
-          <div className="display flex" style={{ fontSize: `clamp(2rem, ${wordmarkSize(84, 20)}, 18rem)` }}>
-            {wordmarkLetters.map((letter, i) => (
-              <span key={i} className="overflow-hidden">
-                <motion.span
-                  className={`block ${i === wordmarkLetters.length - 1 ? "text-acid" : ""}`}
-                  initial={{ y: "105%" }}
-                  animate={{ y: 0 }}
-                  transition={{ delay: 0.1 + i * 0.07, duration: 0.55, ease: [0.2, 0.9, 0.1, 1] }}
-                >
-                  {letter}
-                </motion.span>
-              </span>
-            ))}
-          </div>
-          <motion.p
-            className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-muted-on-ink"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-          >
-            {site.currentDrop} / out now
-          </motion.p>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <div
+      aria-hidden
+      className="intro-overlay fixed inset-0 z-[70] flex flex-col items-center justify-center gap-6 bg-void px-6 text-chalk"
+    >
+      <svg
+        viewBox={LOGO_VIEWBOX}
+        className="w-[min(46vw,15rem)]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={LOGO_STROKE}
+        strokeLinejoin="miter"
+      >
+        <motion.path
+          d={LOGO_OUTLINE}
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.8, ease: draw }}
+        />
+        <motion.path
+          d={LOGO_HOLE}
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ delay: 0.75, duration: 0.25, ease: steps(4) }}
+        />
+        {LOGO_RINGS.map((r) => (
+          // Rings switch on, then blink once like a pair of eyes.
+          <motion.circle
+            key={r.cx}
+            cx={r.cx}
+            cy={r.cy}
+            r={LOGO_RING_R}
+            style={{ transformBox: "fill-box", transformOrigin: "center" }}
+            initial={{ opacity: 0, scaleY: 1 }}
+            animate={{ opacity: 1, scaleY: [1, 1, 0.12, 1] }}
+            transition={{
+              opacity: { delay: 1, duration: 0 },
+              scaleY: { delay: 1.2, duration: 0.3, times: [0, 0.1, 0.5, 1], ease: "linear" },
+            }}
+          />
+        ))}
+      </svg>
+      <motion.p
+        className="display text-center text-[clamp(1.25rem,5vw,2.5rem)]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.1, duration: 0 }}
+      >
+        {site.name}
+      </motion.p>
+    </div>
   );
 }

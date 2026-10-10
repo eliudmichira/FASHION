@@ -9,19 +9,21 @@ import { products } from "@/data/products";
 import { site } from "@/data/site";
 
 export default function Home() {
-  const [lead, ...rest] = products;
+  // The hero already leads with #001, so New in opens on #002.
+  const lead = products[1];
+  const rest = products.filter((p) => p !== lead);
   return (
     <>
       <Hero />
       <div className="mt-10 md:mt-16">
         <Marquee
-          items={[site.name, `${site.currentDrop} out now`, "Unisex", "XS to XXL", `${site.nextDrop.name} loading`]}
+          items={[site.name, `${site.currentDrop} out now`, "Unisex", "All sizes", site.tagline, `${site.nextDrop.name} loading`]}
         />
       </div>
       <Lookbook />
 
       <section aria-labelledby="new-title" className="px-4 py-16 md:px-6 md:py-24">
-        <div className="flex items-end justify-between gap-4 border-b-2 border-ink pb-3">
+        <div className="flex items-end justify-between gap-4 border-b-2 border-chalk pb-3">
           <h2 id="new-title" className="display text-[clamp(3.5rem,10vw,8rem)]">
             New in
           </h2>
@@ -40,7 +42,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Statement text="Unisex cuts. XS to XXL. Priced in shillings." />
+      <Statement text="Unisex. All sizes. Priced in shillings." closer={`${site.tagline}.`} />
       <DropSection />
     </>
   );

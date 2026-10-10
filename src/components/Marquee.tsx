@@ -12,6 +12,7 @@ import {
   useVelocity,
   wrap,
 } from "motion/react";
+import { Logo } from "@/components/Logo";
 
 // Ticker whose speed follows scroll velocity and flips with scroll direction.
 export function Marquee({ items, baseSpeed = 3 }: { items: string[]; baseSpeed?: number }) {
@@ -34,15 +35,16 @@ export function Marquee({ items, baseSpeed = 3 }: { items: string[]; baseSpeed?:
   });
 
   return (
-    <div className="on-ink overflow-hidden border-y-2 border-ink bg-ink py-3 text-bone">
+    <div className="overflow-hidden border-y-2 border-chalk bg-void py-4 text-chalk">
       <p className="sr-only">{items.join(". ")}</p>
-      <motion.div aria-hidden className="display flex whitespace-nowrap text-[clamp(2.5rem,7vw,5.5rem)]" style={{ x }}>
+      <motion.div aria-hidden className="display flex items-center whitespace-nowrap text-[clamp(2rem,5.5vw,4.5rem)]" style={{ x }}>
         {[0, 1, 2, 3].map((i) => (
-          <span key={i} className="pr-[0.25em]">
+          <span key={i} className="flex items-center">
             {items.map((word) => (
-              <span key={word}>
+              <span key={word} className="flex items-center">
                 {word}
-                <span className="px-[0.25em] text-acid">/</span>
+                {/* The mark stands in for a separator, sized to the cap height. */}
+                <Logo className="mx-[0.45em] h-[0.9em] w-auto shrink-0" />
               </span>
             ))}
           </span>

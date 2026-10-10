@@ -1,11 +1,14 @@
 import { site } from "@/data/site";
 
-// Placeholder catalogue. Names, prices and sizes are stand-ins until the real
-// range is ready. Every price ends in 998.
+// #001 and #002 are real pieces with real photos. The rest are stand-ins until
+// the range is ready. Every price ends in 998.
 
 export type Category = "Tops" | "Bottoms" | "Outerwear" | "Accessories";
 
-export type Tone = "stone" | "concrete" | "soot";
+export type Tone = "studio" | "fog" | "graphite";
+
+// focus: where to anchor the crop when a tile is a different shape from the photo.
+export type Photo = { src: string; alt: string; label: string; focus?: string };
 
 export type Product = {
   slug: string;
@@ -14,11 +17,14 @@ export type Product = {
   category: Category;
   price: number;
   sizes: { label: string; inStock: boolean }[];
-  // One tone per placeholder photo: [front, on-model]. Swap for real images.
+  // [main, hover]. Real shots when the piece has them; tone blocks otherwise.
+  photos?: [Photo, Photo];
   tones: [Tone, Tone];
   description: string;
   details: { title: string; body: string }[];
 };
+
+const code = (n: number) => `${site.codePrefix}${String(n).padStart(3, "0")}`;
 
 const apparelSizes = (soldOut: string[] = []) =>
   ["XS", "S", "M", "L", "XL", "XXL"].map((label) => ({
@@ -34,90 +40,115 @@ const placeholderDetails = [
 
 export const products: Product[] = [
   {
-    slug: "heavyweight-box-tee",
-    code: `${site.codePrefix}/001`,
-    name: "Heavyweight Box Tee",
+    slug: "mark-baby-tee",
+    code: code(1),
+    name: "Mark Baby Tee",
     category: "Tops",
     price: 2998,
-    sizes: apparelSizes(["XS"]),
-    tones: ["concrete", "soot"],
-    description: "[Product description, one or two lines]",
+    sizes: apparelSizes(),
+    photos: [
+      {
+        src: "/images/products/mark-baby-tee-back.jpg",
+        alt: "Back of a fitted black baby tee with the Classofinfinitty mark printed large in white",
+        label: "Back",
+      },
+      {
+        src: "/images/products/mark-baby-tee-print.jpg",
+        alt: "Close-up of the white mark print on the back of the black tee",
+        label: "Print",
+      },
+    ],
+    tones: ["studio", "graphite"],
+    description: "Fitted, cropped black baby tee with the mark printed big across the back.",
     details: placeholderDetails,
   },
   {
-    slug: "slash-hoodie",
-    code: `${site.codePrefix}/002`,
-    name: "Slash Hoodie",
+    slug: "eight-ball-skull-baby-tee",
+    code: code(2),
+    name: "8-Ball Skull Baby Tee",
     category: "Tops",
-    price: 6998,
+    price: 3998,
     sizes: apparelSizes(),
-    tones: ["soot", "stone"],
-    description: "[Product description, one or two lines]",
+    photos: [
+      {
+        src: "/images/products/skull-baby-tee-front.jpg",
+        alt: "Fitted black baby tee with a white spiked skull print, an 8-ball for one eye",
+        label: "Front",
+        focus: "50% 62%",
+      },
+      {
+        src: "/images/products/skull-baby-tee-print.jpg",
+        alt: "Close-up of the spiked skull print with the 8-ball eye",
+        label: "Print",
+      },
+    ],
+    tones: ["studio", "graphite"],
+    description: "Fitted, cropped black baby tee with a spiked skull and an 8-ball eye printed on the front.",
     details: placeholderDetails,
   },
   {
     slug: "utility-cargo-pant",
-    code: `${site.codePrefix}/003`,
+    code: code(3),
     name: "Utility Cargo Pant",
     category: "Bottoms",
     price: 5998,
     sizes: apparelSizes(["XXL"]),
-    tones: ["stone", "concrete"],
+    tones: ["fog", "graphite"],
+    description: "[Product description, one or two lines]",
+    details: placeholderDetails,
+  },
+  {
+    slug: "heavyweight-hoodie",
+    code: code(4),
+    name: "Heavyweight Hoodie",
+    category: "Tops",
+    price: 6998,
+    sizes: apparelSizes(),
+    tones: ["graphite", "studio"],
     description: "[Product description, one or two lines]",
     details: placeholderDetails,
   },
   {
     slug: "nylon-track-jacket",
-    code: `${site.codePrefix}/004`,
+    code: code(5),
     name: "Nylon Track Jacket",
     category: "Outerwear",
     price: 7998,
     sizes: apparelSizes(["XS", "S"]),
-    tones: ["concrete", "soot"],
-    description: "[Product description, one or two lines]",
-    details: placeholderDetails,
-  },
-  {
-    slug: "washed-long-sleeve",
-    code: `${site.codePrefix}/005`,
-    name: "Washed Long Sleeve",
-    category: "Tops",
-    price: 3998,
-    sizes: apparelSizes(),
-    tones: ["stone", "soot"],
+    tones: ["studio", "graphite"],
     description: "[Product description, one or two lines]",
     details: placeholderDetails,
   },
   {
     slug: "ripstop-short",
-    code: `${site.codePrefix}/006`,
+    code: code(6),
     name: "Ripstop Short",
     category: "Bottoms",
     price: 3998,
     sizes: apparelSizes(["M"]),
-    tones: ["soot", "concrete"],
+    tones: ["graphite", "fog"],
     description: "[Product description, one or two lines]",
     details: placeholderDetails,
   },
   {
     slug: "panel-bomber",
-    code: `${site.codePrefix}/007`,
+    code: code(7),
     name: "Panel Bomber",
     category: "Outerwear",
     price: 9998,
     sizes: apparelSizes(["XS", "XXL"]),
-    tones: ["concrete", "stone"],
+    tones: ["fog", "studio"],
     description: "[Product description, one or two lines]",
     details: placeholderDetails,
   },
   {
     slug: "tag-cap",
-    code: `${site.codePrefix}/008`,
+    code: code(8),
     name: "Tag Cap",
     category: "Accessories",
     price: 1998,
     sizes: [{ label: "One size", inStock: true }],
-    tones: ["soot", "concrete"],
+    tones: ["graphite", "fog"],
     description: "[Product description, one or two lines]",
     details: placeholderDetails,
   },
@@ -129,11 +160,24 @@ export function getProduct(slug: string) {
   return products.find((p) => p.slug === slug);
 }
 
-export type Look = { id: string; title: string; tone: Tone; productSlugs: string[] };
+// A look is either a real shot of a product being worn, or a placeholder tone.
+export type Look = { id: string; title: string; tone: Tone; photo?: Photo; productSlugs: string[] };
 
 export const looks: Look[] = [
-  { id: "look-01", title: "Look 01", tone: "soot", productSlugs: ["slash-hoodie", "utility-cargo-pant"] },
-  { id: "look-02", title: "Look 02", tone: "concrete", productSlugs: ["nylon-track-jacket", "ripstop-short"] },
-  { id: "look-03", title: "Look 03", tone: "stone", productSlugs: ["heavyweight-box-tee", "tag-cap"] },
-  { id: "look-04", title: "Look 04", tone: "soot", productSlugs: ["panel-bomber", "washed-long-sleeve"] },
+  {
+    id: "look-01",
+    title: "Look 01",
+    tone: "studio",
+    photo: products[0].photos![0],
+    productSlugs: ["mark-baby-tee"],
+  },
+  {
+    id: "look-02",
+    title: "Look 02",
+    tone: "studio",
+    photo: products[1].photos![0],
+    productSlugs: ["eight-ball-skull-baby-tee"],
+  },
+  { id: "look-03", title: "Look 03", tone: "graphite", productSlugs: ["heavyweight-hoodie", "utility-cargo-pant"] },
+  { id: "look-04", title: "Look 04", tone: "fog", productSlugs: ["panel-bomber", "tag-cap"] },
 ];

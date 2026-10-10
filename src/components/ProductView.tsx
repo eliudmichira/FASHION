@@ -25,10 +25,10 @@ export function ProductView({ product }: { product: Product }) {
 
   return (
     <div className="lg:sticky lg:top-[calc(var(--header-h)+1.5rem)]">
-      <span className="inline-block border-2 border-ink px-2 py-0.5 text-sm font-semibold">{product.code}</span>
+      <span className="inline-block border-2 border-chalk px-2 py-0.5 text-sm font-semibold">{product.code}</span>
       <h1 className="display mt-3 text-[clamp(3.5rem,8vw,7rem)]">{product.name}</h1>
-      <p className="display mt-2 text-4xl">{formatKsh(product.price)}</p>
-      <p className="mt-4 max-w-md text-muted">{product.description}</p>
+      <p className="mt-3 text-3xl font-bold tabular-nums">{formatKsh(product.price)}</p>
+      <p className="mt-4 max-w-md text-dim">{product.description}</p>
 
       {!oneSize && (
         <fieldset className="mt-8">
@@ -52,14 +52,14 @@ export function ProductView({ product }: { product: Product }) {
                   setSize(s.label);
                   setError(false);
                 }}
-                className="min-h-12 border-2 border-ink font-semibold hover:bg-ink/10 aria-checked:bg-ink aria-checked:text-bone disabled:border-ink/30 disabled:text-muted disabled:line-through disabled:hover:bg-transparent"
+                className="min-h-12 border-2 border-chalk font-semibold hover:bg-chalk/10 aria-checked:bg-chalk aria-checked:text-void disabled:border-chalk/30 disabled:text-dim disabled:line-through disabled:hover:bg-transparent"
               >
                 {s.label}
               </button>
             ))}
           </div>
           {error && (
-            <p id={`${id}-error`} role="alert" className="mt-2 font-semibold text-error">
+            <p id={`${id}-error`} role="alert" className="mt-2 border-2 border-chalk px-3 py-2 font-semibold">
               Pick a size first.
             </p>
           )}
@@ -71,21 +71,21 @@ export function ProductView({ product }: { product: Product }) {
         onClick={onAdd}
         disabled={soldOut}
         whileTap={{ scale: 0.97 }}
-        className="mt-6 min-h-14 w-full bg-ink text-lg font-semibold text-bone hover:bg-soot disabled:opacity-50"
+        className="mt-6 min-h-14 w-full text-lg font-semibold border-2 border-chalk bg-chalk text-void hover:bg-void hover:text-chalk disabled:opacity-50"
       >
         {soldOut ? "Sold out" : size ? `Add ${size} to bag` : "Add to bag"}
       </motion.button>
 
-      <div className="mt-8 border-t-2 border-ink">
+      <div className="mt-8 border-t-2 border-chalk">
         {product.details.map((d) => (
-          <details key={d.title} className="group border-b border-ink/30">
+          <details key={d.title} className="group border-b border-chalk/30">
             <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between font-semibold [&::-webkit-details-marker]:hidden">
               {d.title}
               <span aria-hidden className="text-xl transition-transform group-open:rotate-45">
                 +
               </span>
             </summary>
-            <p className="pb-4 text-muted">{d.body}</p>
+            <p className="pb-4 text-dim">{d.body}</p>
           </details>
         ))}
       </div>
