@@ -180,10 +180,21 @@ function Drawer({ onClose }: { onClose: () => void }) {
                   This browser is blocking storage, so your bag clears when you close the tab.
                 </p>
               )}
-              <div className="flex items-baseline justify-between">
-                <span className="font-semibold">Subtotal</span>
-                <span className="text-3xl font-bold tabular-nums">{formatKsh(subtotal)}</span>
-              </div>
+              {lines.length > 0 ? (
+                <dl className="grid grid-cols-[1fr_auto] items-baseline gap-y-1">
+                  <dt>Subtotal</dt>
+                  <dd className="text-right tabular-nums">{formatKsh(subtotal)}</dd>
+                  <dt>Delivery</dt>
+                  <dd className="text-right tabular-nums">{formatKsh(site.deliveryFee)}</dd>
+                  <dt className="font-semibold">Total</dt>
+                  <dd className="text-right text-3xl font-bold tabular-nums">{formatKsh(subtotal + site.deliveryFee)}</dd>
+                </dl>
+              ) : (
+                <div className="flex items-baseline justify-between">
+                  <span className="font-semibold">Subtotal</span>
+                  <span className="text-3xl font-bold tabular-nums">{formatKsh(0)}</span>
+                </div>
+              )}
               <MpesaCheckout onPaid={onPaid} />
             </div>
           </>

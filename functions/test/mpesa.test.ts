@@ -186,10 +186,12 @@ describe("parseCallback", () => {
 });
 
 describe("priceOrder", () => {
-  it("charges the catalogue price, whatever the browser sent", () => {
-    const result = priceOrder([{ slug: "night-dweller-baby-tee", size: "S", qty: 2, price: 1 }]);
+  it("charges the catalogue price plus delivery, whatever the browser sent", () => {
+    const result = priceOrder([{ slug: "night-dweller-baby-tee", size: "S", qty: 2, price: 1, deliveryFee: 0 }]);
     assert.ok(!("error" in result));
-    assert.equal(result.amount, 2998 * 2);
+    assert.equal(result.subtotal, 2998 * 2);
+    assert.equal(result.deliveryFee, 298);
+    assert.equal(result.amount, 2998 * 2 + 298);
     assert.equal(result.items[0].price, 2998);
     assert.equal(result.items[0].name, "Night Dweller Baby Tee");
   });
@@ -199,7 +201,8 @@ describe("priceOrder", () => {
       { slug: "tag-cap", size: "One size", qty: 2 },
     ]);
     assert.ok(!("error" in result));
-    assert.equal(result.amount, 2998 + 1998 * 2);
+    // One delivery fee per order, however many pieces.
+    assert.equal(result.amount, 2998 + 1998 * 2 + 298);
   });
   it("refuses empty bags, unknown pieces, sold-out sizes and odd quantities", () => {
     assert.ok("error" in priceOrder([]));

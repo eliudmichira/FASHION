@@ -1,14 +1,17 @@
 import { getProduct } from "../../src/data/products";
+import { site } from "../../src/data/site";
 
 export type OrderItem = { slug: string; name: string; size: string; qty: number; price: number };
 
 const MAX_LINES = 20;
 const MAX_QTY = 10;
 
+export type PricedOrder = { items: OrderItem[]; subtotal: number; deliveryFee: number; amount: number };
+
 // Builds the order from the shop's own catalogue. Only slug, size and quantity
-// come from the browser; names and prices are looked up here, so a tampered
-// bag can't change what the customer is charged.
-export function priceOrder(lines: unknown): { items: OrderItem[]; amount: number } | { error: string } {
+// come from the browser; names, prices and the delivery fee are looked up
+// here, so a tampered bag can't change what the customer is charged.
+export function priceOrder(lines: unknown): PricedOrder | { error: string } {
   if (!Array.isArray(lines) || lines.length === 0) return { error: "Your bag is empty." };
   if (lines.length > MAX_LINES) return { error: "That's too many lines for one order." };
 
@@ -25,6 +28,6 @@ export function priceOrder(lines: unknown): { items: OrderItem[]; amount: number
     }
     items.push({ slug: product.slug, name: product.name, size: option.label, qty, price: product.price });
   }
-  const amount = items.reduce((sum, i) => sum + i.price * i.qty, 0);
-  return { items, amount };
+  const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0);
+  return { items, subtotal, deliveryFee: site.deliveryFee, amount: subtotal + site.deliveryFee };
 }

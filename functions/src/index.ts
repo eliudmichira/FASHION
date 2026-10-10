@@ -83,6 +83,8 @@ export const startMpesaPayment = onCall({ secrets }, async (request) => {
   const order = db.collection("orders").doc();
   await order.set({
     items: priced.items,
+    subtotal: priced.subtotal,
+    deliveryFee: priced.deliveryFee,
     amount: priced.amount,
     currency: "KES",
     customer: { name, phone, address },

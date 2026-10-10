@@ -190,7 +190,7 @@ export function MpesaCheckout({ onPaid }: { onPaid: (order: PaidOrder) => void }
         />
       </label>
       <p className="text-sm text-dim-studio">
-        Delivery isn&apos;t included in this payment. We&apos;ll call your number to arrange it.
+        Includes {formatKsh(site.deliveryFee)} delivery. We&apos;ll call your number to arrange it.
       </p>
       {step.error && (
         <p role="alert" className="border-2 border-void px-3 py-2 text-sm font-semibold">
@@ -198,7 +198,7 @@ export function MpesaCheckout({ onPaid }: { onPaid: (order: PaidOrder) => void }
         </p>
       )}
       <button type="submit" disabled={step.sending} className={primary}>
-        {step.sending ? "Sending prompt…" : `Send M-Pesa prompt for ${formatKsh(subtotal)}`}
+        {step.sending ? "Sending prompt…" : `Send M-Pesa prompt for ${formatKsh(subtotal + site.deliveryFee)}`}
       </button>
       <button
         type="button"

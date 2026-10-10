@@ -39,8 +39,9 @@ Checkout sends an M-Pesa PIN prompt (STK push) through Safaricom's Daraja API.
 The keys never touch the website: three Firebase Cloud Functions in `functions/`
 hold them.
 
-- `startMpesaPayment`: prices the bag from `src/data/products.ts` (the browser
-  only sends piece, size and quantity), saves an order, sends the prompt.
+- `startMpesaPayment`: prices the bag from `src/data/products.ts` plus the
+  flat `deliveryFee` in `src/data/site.ts` (the browser only sends piece, size
+  and quantity), saves an order, sends the prompt.
   One prompt per number per minute.
 - `mpesaPaymentStatus`: the checkout polls this; if Safaricom's callback is
   late it asks Daraja directly.
@@ -95,7 +96,6 @@ Safaricom is faked).
 - [ ] Fabric and care details for every piece
 - [ ] Real Drop 02 date
 - [ ] M-Pesa checkout: Daraja keys, deploy, then switch on (see **M-Pesa payments** below)
-- [ ] Confirm the delivery line in checkout ("Delivery isn't included… We'll call your number to arrange it.") matches how you deliver
 - [x] Waitlist saves to the Firestore `waitlist` collection (`src/components/WaitlistForm.tsx`); check the Firestore rules allow those writes
 - [ ] Privacy policy and terms pages (needed once you collect emails and payments)
 - [x] Instagram link in the footer
