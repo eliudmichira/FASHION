@@ -1,6 +1,6 @@
 # Design direction
 
-Brand: **Classofinfinitty** (set in `src/data/site.ts`). Domain: classofinfinitty.web.app. Tagline: **Nothing But The Best** (owner approved).
+Brand: **Classofinfinitty** (set in `src/data/site.ts`). Domain: classofinfinitty.web.app. Tagline: **Grow To Fly** (owner approved).
 
 Owner's brief: the logo plus the first piece, the Night Dweller Baby Tee (vintage Skele print on the front, the mark as a back hit), modeled by Mona. Unisex, all sizes, prices in KSh ending in 998.
 
@@ -42,7 +42,7 @@ Contrast (antislop `contrast-check.py`): chalk/void 19.52, dim/void 7.02, void/s
 ## Type
 
 - **Display: Tiny5.** Square pixel face; its right-angle steps match the logo's grid, and it is narrow enough for the 16-letter name. Headings only.
-- **Script: Jacquarda Bastarda 9.** Pixel blackletter that echoes the tattoo lettering. Used only for "Nothing But The Best".
+- **Script: Jacquarda Bastarda 9.** Pixel blackletter that echoes the tattoo lettering. Used only for "Grow To Fly".
 - **Body: Archivo.** Plain, readable sans. Prices use it too, so numbers are never ambiguous.
 - Lines and borders are 2px; the header mark is sized so its own line is about 2px.
 

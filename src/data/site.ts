@@ -2,7 +2,7 @@ export const site = {
   // Shows in the wordmark, header, footer, marquee and page titles.
   // Display type is uppercased by CSS; wordmarks resize to fit the length.
   name: "Classofinfinitty",
-  tagline: "Nothing But The Best",
+  tagline: "Grow To Fly",
   // Product codes read #001, #002: the "#" is the logo's own shape.
   codePrefix: "#",
   domain: "classofinfinitty.web.app",
