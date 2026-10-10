@@ -1,6 +1,6 @@
 # Design direction
 
-Brand: **Classofinfinitty** (set in `src/data/site.ts`). Domain: duncanzz.com. Tagline: **Nothing But The Best** (owner approved).
+Brand: **Classofinfinitty** (set in `src/data/site.ts`). Domain: classofinfinitty.web.app. Tagline: **Nothing But The Best** (owner approved).
 
 Owner's brief: the logo plus the first piece, the Skele Baby Tee (vintage Skele print on the front, the mark as a back hit), modeled by Mona. Unisex, all sizes, prices in KSh ending in 998.
 

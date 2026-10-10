@@ -7,7 +7,7 @@ import { PixelGrid } from "@/components/PixelGrid";
 import { site } from "@/data/site";
 import { lockScroll, unlockScroll } from "@/lib/scroll-lock";
 
-const KEY = "dz-intro";
+const KEY = "ci-intro";
 // Stepped easing so the outline draws in hard increments, like pixels lighting.
 const draw = steps(14);
 

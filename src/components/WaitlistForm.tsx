@@ -22,18 +22,27 @@ export function WaitlistForm() {
     }
     setState({ kind: "sending" });
     try {
-      const res = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "Something went wrong.");
-      setState({ kind: "done", stored: Boolean(data.stored) });
+      let stored = false;
+      try {
+        const { getFirestore, collection, addDoc, serverTimestamp } = await import("firebase/firestore");
+        const { app } = await import("@/lib/firebase");
+        const db = getFirestore(app);
+        await addDoc(collection(db, "waitlist"), {
+          email: email.trim(),
+          createdAt: serverTimestamp(),
+        });
+        stored = true;
+      } catch {
+        // Fallback for preview / unconfigured Firestore rules
+        const saved = JSON.parse(localStorage.getItem("waitlist_preview") || "[]");
+        saved.push({ email: email.trim(), at: new Date().toISOString() });
+        localStorage.setItem("waitlist_preview", JSON.stringify(saved));
+      }
+      setState({ kind: "done", stored });
     } catch (err) {
       setState({
         kind: "error",
-        message: err instanceof Error ? err.message : "Couldn't reach the server. Try again in a minute.",
+        message: err instanceof Error ? err.message : "Couldn't save your email. Try again in a minute.",
       });
     }
   }

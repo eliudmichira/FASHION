@@ -2,9 +2,8 @@ import Link from "next/link";
 import { site } from "@/data/site";
 import { wordmarkSize } from "@/lib/wordmark";
 
-// Cached at build time; the year only needs to be as fresh as the last deploy.
-async function copyrightYear() {
-  "use cache";
+// Determined at build time; the year only needs to be as fresh as the last deploy.
+function copyrightYear() {
   return new Date().getFullYear();
 }
 
@@ -35,7 +34,7 @@ export async function Footer() {
         <div className="flex flex-col gap-1 md:items-end">
           <p className="script text-3xl">{site.tagline}</p>
           <p className="text-sm text-dim">
-          © {year} {site.name} / {site.domain}
+            © {year} {site.name}
           </p>
         </div>
       </div>
