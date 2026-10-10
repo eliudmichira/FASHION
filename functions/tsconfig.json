@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "types": ["node"],
+    "outDir": "lib",
+    // ".." so the functions can compile the shop's own product list
+    // (src/data/products.ts): prices live in one place only.
+    "rootDir": "..",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "noUnusedLocals": true
+  },
+  "include": ["src", "test", "../src/data/products.ts", "../src/data/site.ts"]
+}

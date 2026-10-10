@@ -27,10 +27,15 @@ export function WaitlistForm() {
         const { getFirestore, collection, addDoc, serverTimestamp } = await import("firebase/firestore");
         const { app } = await import("@/lib/firebase");
         const db = getFirestore(app);
-        await addDoc(collection(db, "waitlist"), {
-          email: email.trim(),
-          createdAt: serverTimestamp(),
-        });
+        // Firestore waits for the server to confirm a write and retries while
+        // offline, so cap the wait instead of leaving the form on "Joining…".
+        await Promise.race([
+          addDoc(collection(db, "waitlist"), {
+            email: email.trim(),
+            createdAt: serverTimestamp(),
+          }),
+          new Promise((_, reject) => setTimeout(() => reject(new Error("Waitlist save timed out")), 8000)),
+        ]);
         stored = true;
       } catch {
         // Fallback for preview / unconfigured Firestore rules

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Firebase functions: separate package with its own tsc build and tests.
+    "functions/**",
   ]),
 ]);
 

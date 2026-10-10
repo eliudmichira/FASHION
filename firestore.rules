@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Drop 02 waitlist: the site can add an email; nobody can read the list from the site.
+    match /waitlist/{id} {
+      allow create: if request.resource.data.keys().hasOnly(['email', 'createdAt'])
+        && request.resource.data.email is string
+        && request.resource.data.email.size() <= 254
+        && request.resource.data.email.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+        && request.resource.data.createdAt == request.time;
+    }
+
+    // Orders and the M-Pesa prompt limits are written only by the Cloud
+    // Functions (Admin SDK, which skips these rules). The site never touches them.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

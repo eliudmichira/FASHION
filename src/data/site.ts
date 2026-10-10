@@ -10,6 +10,13 @@ export const site = {
   // Shows the "placeholder content" strip across the site. Set to false once
   // real photos, products and the drop date are in.
   preview: true,
+  payments: {
+    // Turn on once the M-Pesa functions are deployed and their secrets are set
+    // (see README). Until then the bag shows "Checkout coming soon".
+    mpesa: false,
+    // Must match setGlobalOptions({ region }) in functions/src/index.ts.
+    region: "europe-west1",
+  },
   currentDrop: "Drop 01",
   nextDrop: {
     name: "Drop 02",

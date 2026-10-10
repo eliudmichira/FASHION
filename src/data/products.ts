@@ -1,4 +1,4 @@
-import { site } from "@/data/site";
+import { site } from "./site";
 
 // #001 is a real piece with real photos and the owner's own copy. The rest are
 // stand-ins until the range is ready: their descriptions are drafts in the
