@@ -9,7 +9,7 @@ export const site = {
   instagram: "https://www.instagram.com/classofinfinitty",
   // Shows the "placeholder content" strip across the site. Set to false once
   // real photos, products and the drop date are in.
-  preview: true,
+  preview: false,
   // Flat delivery charge per order, added to the M-Pesa total. The checkout
   // functions read this same value, so the shop and the charge always agree.
   deliveryFee: 298,

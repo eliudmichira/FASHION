@@ -43,7 +43,9 @@ export function Hero() {
 
           <div className="mt-8 w-full border-t-2 border-chalk pt-6 lg:mt-0">
             <p className="display text-4xl md:t-d4">{site.currentDrop} is out.</p>
-            <p className="mt-2 text-dim">{products.length} pieces. Unisex, all sizes.</p>
+            <p className="mt-2 text-dim">
+              {products.length} {products.length === 1 ? "piece" : "pieces"}. Unisex, all sizes.
+            </p>
             <div className="mt-5 flex flex-wrap justify-center gap-2 lg:justify-start">
               <Link
                 href="/shop"

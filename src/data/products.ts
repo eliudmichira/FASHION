@@ -30,6 +30,7 @@ export type Product = {
   model?: Model;
   description: string;
   details: { title: string; body: string }[];
+  hidden?: boolean;
 };
 
 const code = (n: number) => `${site.codePrefix}${String(n).padStart(3, "0")}`;
@@ -48,13 +49,13 @@ const placeholderDetails = [
 
 const mona: Model = { name: "Mona", height: "5'7", size: "Small" };
 
-export const products: Product[] = [
+export const allProducts: Product[] = [
   {
     slug: "night-dweller-baby-tee",
     code: code(1),
     name: "Night Dweller Baby Tee",
     category: "Tops",
-    price: 2998,
+    price: 1000,
     sizes: apparelSizes(),
     photos: [
       {
@@ -96,9 +97,9 @@ export const products: Product[] = [
     description:
       "Mona (5'7) is modeling a sz Small lightweight, cropped, short-sleeved tee with a vintage Skele print to scare the normies off. With a clean classofinfinitty back hit for the night dwellers to rock in the dark. Enjoy!",
     details: [
-      { title: "Fabric", body: "Lightweight. [Fabric, weight and origin]" },
-      { title: "Fit", body: "Cropped and short-sleeved. Mona is 5'7 and wears a size Small." },
-      { title: "Care", body: "[Washing and care instructions]" },
+      { title: "Fabric", body: "Lightweight 100% premium cotton jersey (180 GSM). Soft-washed for breathable comfort." },
+      { title: "Fit", body: "Cropped and short-sleeved with a relaxed boxy cut. Mona is 5'7 and wears a size Small." },
+      { title: "Care", body: "Machine wash cold inside out with like colours. Do not iron directly over the print. Hang dry." },
     ],
   },
   {
@@ -116,6 +117,7 @@ export const products: Product[] = [
       { title: "Fit", body: "Regular fit, short-sleeved. [Model measurements and size]" },
       { title: "Care", body: "[Washing and care instructions]" },
     ],
+    hidden: true,
   },
   {
     slug: "utility-cargo-pant",
@@ -128,6 +130,7 @@ export const products: Product[] = [
     description:
       "[Model] ([height]) is modeling a sz [size] utility cargo pant with pockets for everything you shouldn't be carrying. Made for the long walk home after the city's gone quiet. Enjoy!",
     details: placeholderDetails,
+    hidden: true,
   },
   {
     slug: "heavyweight-hoodie",
@@ -140,6 +143,7 @@ export const products: Product[] = [
     description:
       "[Model] ([height]) is modeling a sz [size] heavyweight hoodie, the one you disappear into when the group chat gets loud. Hood up, world off. Enjoy!",
     details: placeholderDetails,
+    hidden: true,
   },
   {
     slug: "nylon-track-jacket",
@@ -152,6 +156,7 @@ export const products: Product[] = [
     description:
       "[Model] ([height]) is modeling a sz [size] nylon track jacket that has never once been near a track. Zip it to the chin and leave the normies behind. Enjoy!",
     details: placeholderDetails,
+    hidden: true,
   },
   {
     slug: "ripstop-short",
@@ -164,6 +169,7 @@ export const products: Product[] = [
     description:
       "[Model] ([height]) is modeling a sz [size] ripstop short, tough enough for the pit and light enough for the heat after. Enjoy!",
     details: placeholderDetails,
+    hidden: true,
   },
   {
     slug: "panel-bomber",
@@ -176,6 +182,7 @@ export const products: Product[] = [
     description:
       "[Model] ([height]) is modeling a sz [size] panel bomber cut for the night shift. Throw it over the Night Dweller tee and you're dressed for whatever happens after dark. Enjoy!",
     details: placeholderDetails,
+    hidden: true,
   },
   {
     slug: "tag-cap",
@@ -187,13 +194,17 @@ export const products: Product[] = [
     tones: ["ash", "graphite"],
     description: "One size, every head. The tag cap keeps the sun off your face and the normies guessing. Enjoy!",
     details: placeholderDetails,
+    hidden: true,
   },
 ];
 
+export const products: Product[] = allProducts.filter((p) => !p.hidden);
+
 export const categories: Category[] = ["Tops", "Bottoms", "Outerwear", "Accessories"];
 
-export function getProduct(slug: string) {
-  return products.find((p) => p.slug === slug);
+export function getProduct(slug: string, includeHidden = false) {
+  const list = includeHidden ? allProducts : products;
+  return list.find((p) => p.slug === slug);
 }
 
 // A look is either a real shot of a product being worn, or a placeholder tone.
@@ -201,7 +212,7 @@ export type Look = { id: string; title: string; tone: Tone; photo?: Photo; produ
 
 const nightDweller = products[0];
 
-export const looks: Look[] = [
+export const allLooks: Look[] = [
   { id: "look-01", title: "Look 01", tone: "ash", photo: nightDweller.photos![1], productSlugs: [nightDweller.slug] },
   { id: "look-02", title: "Look 02", tone: "ash", photo: nightDweller.photos![0], productSlugs: [nightDweller.slug] },
   {
@@ -249,3 +260,5 @@ export const looks: Look[] = [
     productSlugs: [nightDweller.slug],
   },
 ];
+
+export const looks: Look[] = allLooks.slice(0, 2);

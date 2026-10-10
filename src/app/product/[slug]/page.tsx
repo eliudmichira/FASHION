@@ -42,18 +42,20 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
         <ProductView product={product} />
       </div>
 
-      <section aria-labelledby="related-title" className="wrap px-4 py-20 md:px-6">
-        <h2 id="related-title" className="display border-b-2 border-chalk pb-3 text-[clamp(3rem,8vw,6rem)] md:t-d2">
-          Wear it with
-        </h2>
-        <ul className="mt-6 grid grid-cols-2 gap-x-3 gap-y-10 md:grid-cols-4 md:gap-x-4">
-          {related.map((p) => (
-            <li key={p.slug}>
-              <ProductCard product={p} />
-            </li>
-          ))}
-        </ul>
-      </section>
+      {related.length > 0 && (
+        <section aria-labelledby="related-title" className="wrap px-4 py-20 md:px-6">
+          <h2 id="related-title" className="display border-b-2 border-chalk pb-3 text-[clamp(3rem,8vw,6rem)] md:t-d2">
+            Wear it with
+          </h2>
+          <ul className="mt-6 grid grid-cols-2 gap-x-3 gap-y-10 md:grid-cols-4 md:gap-x-4">
+            {related.map((p) => (
+              <li key={p.slug}>
+                <ProductCard product={p} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </>
   );
 }

@@ -27,12 +27,12 @@ export default function Home() {
             New in
           </h2>
           <Link href="/shop" className="flex min-h-11 items-center font-semibold underline underline-offset-4">
-            All {products.length} pieces
+            {products.length === 1 ? "1 piece" : `All ${products.length} pieces`}
           </Link>
         </div>
         {/* Lead piece takes the left half on wide screens; the rest fill a tighter grid. */}
-        <div className="mt-6 grid gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="sm:col-span-2 lg:row-span-2">
+        <div className={rest.length > 0 ? "mt-6 grid gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-4" : "mt-6 max-w-xl"}>
+          <div className={rest.length > 0 ? "sm:col-span-2 lg:row-span-2" : ""}>
             <ProductCard product={lead} large />
           </div>
           {rest.slice(0, 4).map((p) => (
