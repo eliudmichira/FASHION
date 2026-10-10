@@ -42,7 +42,7 @@ export const viewport: Viewport = {
 };
 
 // Runs before first paint so returning visitors in the same session skip the intro.
-const introFlag = `try{if(sessionStorage.getItem("dz-intro")==="1")document.documentElement.dataset.introSeen=""}catch(e){}`;
+const introFlag = `try{if(sessionStorage.getItem("ci-intro")==="1")document.documentElement.dataset.introSeen=""}catch(e){}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

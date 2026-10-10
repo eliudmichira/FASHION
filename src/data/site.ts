@@ -5,7 +5,7 @@ export const site = {
   tagline: "Nothing But The Best",
   // Product codes read #001, #002: the "#" is the logo's own shape.
   codePrefix: "#",
-  domain: "duncanzz.com",
+  domain: "classofinfinitty.web.app",
   instagram: "https://www.instagram.com/classofinfinitty",
   // Shows the "placeholder content" strip across the site. Set to false once
   // real photos, products and the drop date are in.

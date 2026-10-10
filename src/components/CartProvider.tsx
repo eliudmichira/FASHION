@@ -23,7 +23,7 @@ type CartContextValue = {
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
-const STORAGE_KEY = "dz-bag";
+const STORAGE_KEY = "ci-bag";
 const MAX_QTY = 10;
 
 // The saved bag lives in localStorage, read through useSyncExternalStore so the

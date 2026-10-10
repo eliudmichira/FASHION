@@ -34,7 +34,7 @@ export async function Footer() {
         <div className="flex flex-col gap-1 md:items-end">
           <p className="script text-3xl">{site.tagline}</p>
           <p className="text-sm text-dim">
-          © {year} {site.name} / {site.domain}
+            © {year} {site.name}
           </p>
         </div>
       </div>
