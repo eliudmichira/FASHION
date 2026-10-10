@@ -41,7 +41,7 @@ The bag is a slide-out drawer, saved in the visitor's browser.
 - [ ] Fabric and care details for every piece
 - [ ] Real Drop 02 date
 - [ ] Connect checkout (Shopify) in `src/components/CartDrawer.tsx`
-- [ ] Connect the waitlist to an email provider in `src/app/api/waitlist/route.ts`
+- [x] Waitlist saves to the Firestore `waitlist` collection (`src/components/WaitlistForm.tsx`); check the Firestore rules allow those writes
 - [ ] Privacy policy and terms pages (needed once you collect emails and payments)
 - [x] Instagram link in the footer
 - [ ] TikTok link in the footer
