@@ -61,7 +61,7 @@ export function Hero() {
           className="relative block overflow-hidden"
         >
           <motion.div style={{ y: photoY }} className="scale-[1.1]">
-            <ProductShot product={lead} shot={0} priority sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[3/4]" />
+            <ProductShot product={lead} shot={1} priority sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[3/4]" />
           </motion.div>
           <span className="absolute bottom-0 left-0 bg-void px-3 py-2 text-sm font-semibold">
             {lead.code} {lead.name}

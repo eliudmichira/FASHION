@@ -25,6 +25,7 @@ The bag is a slide-out drawer, saved in the visitor's browser.
 ## Where to change things
 
 - **Products and prices:** `src/data/products.ts`. Keep every price ending in 998.
+- **Descriptions:** `description` per product, in the house voice: who's modeling and in what size, what the piece is, what the print does, who it's for, then "Enjoy!". Add `model` (name, height, size) and the size picker shows it too.
 - **Brand name, tagline and code prefix:** `name`, `tagline` and `codePrefix` in `src/data/site.ts`.
 - **Logo:** `src/components/Logo.tsx` (site) and `src/app/icon.svg` (browser tab), both drawn from the same vector.
 - **Drop names and the Drop 02 date:** `src/data/site.ts`.
@@ -34,10 +35,10 @@ The bag is a slide-out drawer, saved in the visitor's browser.
 
 ## Before launch
 
-- [x] Photos for #001 Mark Baby Tee and #002 8-Ball Skull Baby Tee
-- [ ] Second views (front of #001, back of #002) to replace the print close-ups
+- [x] Photos and description for #001 Skele Baby Tee (front, back, both prints)
 - [ ] Photos for the other six pieces, or remove them
-- [ ] Real names and copy for the other six pieces; fabric, fit and care for all
+- [ ] Real names for the other six pieces, and the [bracketed] facts in their draft descriptions
+- [ ] Fabric and care details for every piece
 - [ ] Real Drop 02 date
 - [ ] Connect checkout (Shopify) in `src/components/CartDrawer.tsx`
 - [ ] Connect the waitlist to an email provider in `src/app/api/waitlist/route.ts`

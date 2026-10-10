@@ -28,8 +28,16 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
       <div className="grid gap-8 px-4 pt-6 md:px-6 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
         {/* Phones swipe through the photos so size and price stay near the top; wide screens stack them. */}
         <div className="-mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 md:-mx-6 md:px-6 lg:mx-0 lg:grid lg:overflow-visible lg:px-0">
-          <ProductShot product={product} shot={0} priority sizes="(min-width: 1024px) 58vw, 82vw" className="aspect-[3/4] w-[82%] shrink-0 snap-center lg:w-auto" />
-          <ProductShot product={product} shot={1} sizes="(min-width: 1024px) 58vw, 82vw" className="aspect-[3/4] w-[82%] shrink-0 snap-center lg:w-auto" />
+          {Array.from({ length: Math.max(2, product.photos?.length ?? 0) }, (_, shot) => (
+            <ProductShot
+              key={shot}
+              product={product}
+              shot={shot}
+              priority={shot === 0}
+              sizes="(min-width: 1024px) 58vw, 82vw"
+              className="aspect-[3/4] w-[82%] shrink-0 snap-center lg:w-auto"
+            />
+          ))}
         </div>
         <ProductView product={product} />
       </div>

@@ -1,7 +1,8 @@
 import { Photo, Placeholder } from "@/components/Placeholder";
 import type { Product } from "@/data/products";
 
-// Shot 0 is the main image, shot 1 the hover/second view.
+// Shot 0 is the main image, shot 1 the hover/second view, any later ones extra
+// product-page views. Placeholder products only have the first two.
 export function ProductShot({
   product,
   shot,
@@ -12,7 +13,7 @@ export function ProductShot({
   className = "",
 }: {
   product: Product;
-  shot: 0 | 1;
+  shot: number;
   sizes: string;
   priority?: boolean;
   overlay?: boolean;
@@ -25,7 +26,7 @@ export function ProductShot({
   }
   return (
     <Placeholder
-      tone={product.tones[shot]}
+      tone={product.tones[shot === 0 ? 0 : 1]}
       code={product.code}
       label={shot === 0 ? "Front" : "Back"}
       overlay={overlay}

@@ -9,9 +9,8 @@ import { products } from "@/data/products";
 import { site } from "@/data/site";
 
 export default function Home() {
-  // The hero already leads with #001, so New in opens on #002.
-  const lead = products[1];
-  const rest = products.filter((p) => p !== lead);
+  // The hero shows #001 from the back; New in leads with its front.
+  const [lead, ...rest] = products;
   return (
     <>
       <Hero />

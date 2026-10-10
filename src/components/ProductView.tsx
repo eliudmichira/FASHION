@@ -28,11 +28,16 @@ export function ProductView({ product }: { product: Product }) {
       <span className="inline-block border-2 border-chalk px-2 py-0.5 text-sm font-semibold">{product.code}</span>
       <h1 className="display mt-3 text-[clamp(3.5rem,8vw,7rem)]">{product.name}</h1>
       <p className="mt-3 text-3xl font-bold tabular-nums">{formatKsh(product.price)}</p>
-      <p className="mt-4 max-w-md text-dim">{product.description}</p>
+      <p className="mt-4 max-w-md leading-relaxed">{product.description}</p>
 
       {!oneSize && (
         <fieldset className="mt-8">
           <legend className="font-semibold">Size</legend>
+          {product.model && (
+            <p className="text-sm text-dim">
+              {product.model.name} is {product.model.height} and wears a size {product.model.size}.
+            </p>
+          )}
           <div
             id={`${id}-sizes`}
             tabIndex={-1}
