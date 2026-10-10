@@ -5,7 +5,7 @@ export const site = {
   tagline: "Grow To Fly",
   // Product codes read #001, #002: the "#" is the logo's own shape.
   codePrefix: "#",
-  domain: "classofinfinitty.web.app",
+  domain: "classofinfinitty.shop",
   instagram: "https://www.instagram.com/classofinfinitty",
   // Shows the "placeholder content" strip across the site. Set to false once
   // real photos, products and the drop date are in.
