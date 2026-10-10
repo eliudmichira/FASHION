@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/check-firebase.mjs",
     "build": "next build",
+    "postbuild": "node scripts/fix-windows-export.mjs",
     "start": "next start",
     "lint": "eslint"
   },

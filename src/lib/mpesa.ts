@@ -26,7 +26,8 @@ export async function getPaymentStatus(orderId: string) {
 }
 
 // The functions send shopper-ready messages for the errors a shopper can fix;
-// anything else gets a general one.
+// anything else gets a general one. The raw error goes to the browser console
+// (see MpesaCheckout), not to the shopper.
 export function paymentErrorMessage(err: unknown): string {
   const rawCode = (err as { code?: string })?.code ?? "";
   const code = rawCode.replace(/^functions\//, "");
@@ -34,5 +35,5 @@ export function paymentErrorMessage(err: unknown): string {
   const shopperFacing = ["invalid-argument", "resource-exhausted", "unavailable"];
   // The Functions SDK appends the HTTP status ("… [400]"); shoppers don't need it.
   if (shopperFacing.includes(code) && message) return message.replace(/\s*\[\d{3}\]$/, "");
-  return message || "Checkout isn't working right now. Try again in a few minutes.";
+  return "Checkout isn't working right now. Try again in a few minutes.";
 }

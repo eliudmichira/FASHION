@@ -8,9 +8,16 @@ Design direction lives in [`DESIGN.md`](DESIGN.md).
 ```bash
 npm install
 npm run dev      # http://localhost:3000
-npm run build    # production build
+npm run build    # production build, into out/
 npm run lint
 ```
+
+Run `npm install` again every time you pull, before building. The build stops
+with a message if `node_modules` is out of date in the way that breaks
+checkout. It also fixes up the page prefetch files when you build on Windows
+(`scripts/fix-windows-export.mjs`), so links stay instant on Firebase Hosting.
+
+To publish the site: `npm install && npm run build && firebase deploy --only hosting`.
 
 ## Pages
 
@@ -82,6 +89,22 @@ keys and a passkey. Then: update the three secrets, and in `functions/.env` set
 `MPESA_PARTY_B` and `MPESA_TRANSACTION_TYPE=CustomerBuyGoodsOnline`), plus
 `MPESA_CALLBACK_BASE=https://classofinfinitty.shop` once that domain points at
 Firebase Hosting. Redeploy with `firebase deploy --only functions`.
+
+### If checkout fails
+
+The shopper only sees "Checkout isn't working right now". The real error is in
+the browser console, and on the server in
+`firebase functions:log --only startMpesaPayment`.
+
+- **"Service functions is not available"** (browser console): the site was
+  built from an out-of-date `node_modules`. Run `npm install`, then build and
+  deploy hosting again.
+- **"Daraja auth failed: HTTP 400"** (functions log): Safaricom refused the
+  consumer key and secret. Copy both again from your app on the Daraja portal
+  (sandbox keys only work with `MPESA_ENV=sandbox`, production keys only with
+  `production`), set them again with `firebase functions:secrets:set`, then
+  run `firebase deploy --only functions`. Functions keep using the old values
+  until they're redeployed.
 
 ### Tests
 
