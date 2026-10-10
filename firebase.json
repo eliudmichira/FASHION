@@ -7,6 +7,13 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "redirects": [
+      {
+        "source": "/product/skele-baby-tee",
+        "destination": "/product/night-dweller-baby-tee",
+        "type": 301
+      }
     ]
   }
 }

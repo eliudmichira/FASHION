@@ -49,31 +49,31 @@ const mona: Model = { name: "Mona", height: "5'7", size: "Small" };
 
 export const products: Product[] = [
   {
-    slug: "skele-baby-tee",
+    slug: "night-dweller-baby-tee",
     code: code(1),
-    name: "Skele Baby Tee",
+    name: "Night Dweller Baby Tee",
     category: "Tops",
     price: 2998,
     sizes: apparelSizes(),
     photos: [
       {
-        src: "/images/products/skele-baby-tee-front.jpg",
-        alt: "Mona wearing the black Skele Baby Tee: a white vintage skull print with a spiked mohawk and an 8-ball eye on the front",
+        src: "/images/products/night-dweller-baby-tee-front.jpg",
+        alt: "Mona wearing the black Night Dweller Baby Tee: the white vintage Skele print, a skull with a spiked mohawk and an 8-ball eye, on the front",
         label: "Front",
         focus: "50% 62%",
       },
       {
-        src: "/images/products/skele-baby-tee-back.jpg",
-        alt: "Back of the black Skele Baby Tee with the Classofinfinitty mark printed large in white",
+        src: "/images/products/night-dweller-baby-tee-back.jpg",
+        alt: "Back of the black Night Dweller Baby Tee with the Classofinfinitty mark printed large in white",
         label: "Back",
       },
       {
-        src: "/images/products/skele-baby-tee-front-print.jpg",
+        src: "/images/products/night-dweller-baby-tee-front-print.jpg",
         alt: "Close-up of the Skele print on the front",
         label: "Front print",
       },
       {
-        src: "/images/products/skele-baby-tee-back-print.jpg",
+        src: "/images/products/night-dweller-baby-tee-back-print.jpg",
         alt: "Close-up of the Classofinfinitty back hit",
         label: "Back print",
       },
@@ -146,7 +146,7 @@ export const products: Product[] = [
     sizes: apparelSizes(["XS", "XXL"]),
     tones: ["fog", "studio"],
     description:
-      "[Model] ([height]) is modeling a sz [size] panel bomber cut for the night shift. Throw it over the Skele tee and you're dressed for whatever happens after dark. Enjoy!",
+      "[Model] ([height]) is modeling a sz [size] panel bomber cut for the night shift. Throw it over the Night Dweller tee and you're dressed for whatever happens after dark. Enjoy!",
     details: placeholderDetails,
   },
   {
@@ -171,11 +171,11 @@ export function getProduct(slug: string) {
 // A look is either a real shot of a product being worn, or a placeholder tone.
 export type Look = { id: string; title: string; tone: Tone; photo?: Photo; productSlugs: string[] };
 
-const skele = products[0];
+const nightDweller = products[0];
 
 export const looks: Look[] = [
-  { id: "look-01", title: "Look 01", tone: "studio", photo: skele.photos![1], productSlugs: [skele.slug] },
-  { id: "look-02", title: "Look 02", tone: "studio", photo: skele.photos![0], productSlugs: [skele.slug] },
+  { id: "look-01", title: "Look 01", tone: "studio", photo: nightDweller.photos![1], productSlugs: [nightDweller.slug] },
+  { id: "look-02", title: "Look 02", tone: "studio", photo: nightDweller.photos![0], productSlugs: [nightDweller.slug] },
   { id: "look-03", title: "Look 03", tone: "graphite", productSlugs: ["heavyweight-hoodie", "utility-cargo-pant"] },
   { id: "look-04", title: "Look 04", tone: "fog", productSlugs: ["panel-bomber", "tag-cap"] },
 ];

@@ -35,7 +35,7 @@ The bag is a slide-out drawer, saved in the visitor's browser.
 
 ## Before launch
 
-- [x] Photos and description for #001 Skele Baby Tee (front, back, both prints)
+- [x] Photos and description for #001 Night Dweller Baby Tee (front, back, both prints)
 - [ ] Photos for the other six pieces, or remove them
 - [ ] Real names for the other six pieces, and the [bracketed] facts in their draft descriptions
 - [ ] Fabric and care details for every piece

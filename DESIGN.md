@@ -2,11 +2,11 @@
 
 Brand: **Classofinfinitty** (set in `src/data/site.ts`). Domain: classofinfinitty.web.app. Tagline: **Nothing But The Best** (owner approved).
 
-Owner's brief: the logo plus the first piece, the Skele Baby Tee (vintage Skele print on the front, the mark as a back hit), modeled by Mona. Unisex, all sizes, prices in KSh ending in 998.
+Owner's brief: the logo plus the first piece, the Night Dweller Baby Tee (vintage Skele print on the front, the mark as a back hit), modeled by Mona. Unisex, all sizes, prices in KSh ending in 998.
 
 ## Voice
 
-Taken from the owner's own description of the Skele tee. Insider and a little menacing, written to the crew, never to everyone: "to scare the normies off", "for the night dwellers to rock in the dark". Product copy names who's modeling and the size, says what the piece is plainly, gives the print a job, and signs off "Enjoy!".
+Taken from the owner's own description of the Night Dweller tee. Insider and a little menacing, written to the crew, never to everyone: "to scare the normies off", "for the night dwellers to rock in the dark". Product copy names who's modeling and the size, says what the piece is plainly, gives the print a job, and signs off "Enjoy!".
 
 Dial: ENERGY 2 / RHYTHM 3 / MOTION 3
 
