@@ -21,9 +21,9 @@ export default function Home() {
       </div>
       <Lookbook />
 
-      <section aria-labelledby="new-title" className="px-4 py-16 md:px-6 md:py-24">
+      <section aria-labelledby="new-title" className="wrap px-4 py-16 md:px-6 md:py-24">
         <div className="flex items-end justify-between gap-4 border-b-2 border-chalk pb-3">
-          <h2 id="new-title" className="display text-[clamp(3.5rem,10vw,8rem)]">
+          <h2 id="new-title" className="display text-[clamp(3.5rem,10vw,8rem)] md:t-d2">
             New in
           </h2>
           <Link href="/shop" className="flex min-h-11 items-center font-semibold underline underline-offset-4">

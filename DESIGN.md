@@ -30,8 +30,8 @@ Design Read: e-commerce site for a unisex streetwear label with a punk and tatto
 | void | `#0C0C10` | Page base, sampled from the tee. The logo lives on black, so the dark site is a brand decision |
 | chalk | `#FFFFFF` | Type and lines, same as the logo |
 | studio | `#D4D6E2` | Photo tiles and inverted panels (drop block, bag, mobile menu). Matches the studio backdrop so photos have no visible edge |
-| fog | `#B4B7C6` | Placeholder tone only |
-| graphite | `#1E1E25` | Placeholder tone only |
+| graphite | `#1E1E25` | Placeholder tone |
+| ash | `#2A2A33` | Placeholder tone (alternates with graphite) |
 | dim | `#9A9AA6` | Secondary text on void |
 | dim-studio | `#4A4B55` | Secondary text on studio or white |
 
@@ -42,6 +42,8 @@ Contrast (antislop `contrast-check.py`): chalk/void 19.52, dim/void 7.02, void/s
 ## Type
 
 - **Display: Tiny5.** Square pixel face; its right-angle steps match the logo's grid, and it is narrow enough for the 16-letter name. Headings only.
+- **Scale (tablet and up):** `t-d1` to `t-d5` in `globals.css`. Tiny5 is drawn on 8 pixels per em, so sizes snap to multiples of 8px (crisp pixels) and stop at a ceiling (64 to 128px for the largest). Phones keep their own fluid sizes.
+- **Script scale:** `t-script`, `t-script-l`, snapped to 13px steps (Jacquarda Bastarda is 13 pixels per em).
 - **Script: Jacquarda Bastarda 9.** Pixel blackletter that echoes the tattoo lettering. Used only for "Grow To Fly".
 - **Body: Archivo.** Plain, readable sans. Prices use it too, so numbers are never ambiguous.
 - Lines and borders are 2px; the header mark is sized so its own line is about 2px.
@@ -59,5 +61,8 @@ Contrast (antislop `contrast-check.py`): chalk/void 19.52, dim/void 7.02, void/s
 ## Layout
 
 - Sections deliberately differ: split hero (mark and photo), ticker band, pinned lookbook, asymmetric New in grid, scroll-lit statement, inverted Drop 02 block.
+- Content stops at 1600px wide (`.wrap`); full-bleed bands (ticker, lookbook, footer mark) keep their content on the same edge (`.gutter-x`).
+- Desktop hero is exactly one screen tall: mark, name and the way into the shop on the left, the back hit filling the right.
+- Placeholders are dark (graphite/ash) with a faint mark, so real product shots are what the eye finds first.
 - Radius 0 everywhere except the logo-ring elements (bag counter, cursor).
 - No grain: the shots are clean; texture lives in the prints.

@@ -46,14 +46,14 @@ export function Countdown({ opensAt }: { opensAt: string }) {
   const { done, units } = partsUntil(target, at ?? target);
 
   if (at !== null && done) {
-    return <p className="display text-[clamp(4rem,14vw,9rem)]">It&apos;s live.</p>;
+    return <p className="display text-[clamp(4rem,14vw,9rem)] md:t-d2">It&apos;s live.</p>;
   }
 
   return (
     <div role="timer" aria-label="Time until the drop opens" className="grid grid-cols-4 gap-2 md:gap-4">
       {units.map((u) => (
         <div key={u.label} className="border-2 border-void p-2 md:p-4">
-          <span className="display block text-[clamp(3rem,10vw,8rem)] tabular-nums">
+          <span className="display block text-[clamp(3rem,10vw,8rem)] tabular-nums md:t-d3">
             {at === null ? "--" : String(u.value).padStart(2, "0")}
           </span>
           <span className="text-sm font-semibold">{u.label}</span>

@@ -11,19 +11,19 @@ export function Statement({ text, closer }: { text: string; closer: string }) {
   const words = text.split(" ");
   const steps = words.length + 1;
   return (
-    <section aria-label="What we make" className="px-4 py-24 md:px-6 md:py-36">
+    <section aria-label="What we make" className="wrap px-4 py-24 md:px-6 md:py-36">
       <p ref={ref}>
         <span className="sr-only">
           {text} {closer}
         </span>
-        <span aria-hidden className="display block max-w-[11ch] text-[clamp(3rem,10vw,9rem)]">
+        <span aria-hidden className="display block max-w-[11ch] text-[clamp(3rem,10vw,9rem)] md:t-d2">
           {words.map((word, i) => (
             <Word key={i} progress={scrollYProgress} range={[i / steps, (i + 1) / steps]}>
               {word}
             </Word>
           ))}
         </span>
-        <span aria-hidden className="script mt-4 block text-[clamp(2.5rem,8vw,7rem)]">
+        <span aria-hidden className="script mt-4 block text-[clamp(2.5rem,8vw,7rem)] md:t-script-l">
           <Word progress={scrollYProgress} range={[(steps - 1) / steps, 1]}>
             {closer}
           </Word>

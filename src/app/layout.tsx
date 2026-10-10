@@ -50,7 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: introFlag }} />
       </head>
-      <body className="flex min-h-dvh flex-col">
+      <body className="flex min-h-dvh flex-col" style={site.preview ? ({ "--strip-h": "2rem" } as React.CSSProperties) : undefined}>
         <a
           href="#main"
           className="sr-only z-[80] bg-chalk px-4 py-3 font-semibold text-void focus:not-sr-only focus:fixed focus:left-2 focus:top-2"
@@ -59,7 +59,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <Providers>
           {site.preview && (
-            <p className="bg-studio px-4 py-2 text-center text-xs text-void">
+            <p className="flex min-h-8 items-center justify-center bg-studio px-4 py-1 text-center text-xs text-void">
               Preview build: most product photos and details, and the drop date, are placeholders.
             </p>
           )}

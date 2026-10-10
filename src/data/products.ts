@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 
 export type Category = "Tops" | "Bottoms" | "Outerwear" | "Accessories";
 
-export type Tone = "studio" | "fog" | "graphite";
+export type Tone = "graphite" | "ash";
 
 // focus: where to anchor the crop when a tile is a different shape from the photo.
 export type Photo = { src: string; alt: string; label: string; focus?: string };
@@ -66,6 +66,7 @@ export const products: Product[] = [
         src: "/images/products/night-dweller-baby-tee-back.jpg",
         alt: "Back of the black Night Dweller Baby Tee with the Classofinfinitty mark printed large in white",
         label: "Back",
+        focus: "50% 45%",
       },
       {
         src: "/images/products/night-dweller-baby-tee-front-print.jpg",
@@ -78,7 +79,7 @@ export const products: Product[] = [
         label: "Back print",
       },
     ],
-    tones: ["studio", "graphite"],
+    tones: ["ash", "graphite"],
     model: mona,
     // The owner's own words.
     description:
@@ -96,7 +97,7 @@ export const products: Product[] = [
     category: "Bottoms",
     price: 5998,
     sizes: apparelSizes(["XXL"]),
-    tones: ["fog", "graphite"],
+    tones: ["graphite", "ash"],
     description:
       "[Model] ([height]) is modeling a sz [size] utility cargo pant with pockets for everything you shouldn't be carrying. Made for the long walk home after the city's gone quiet. Enjoy!",
     details: placeholderDetails,
@@ -108,7 +109,7 @@ export const products: Product[] = [
     category: "Tops",
     price: 6998,
     sizes: apparelSizes(),
-    tones: ["graphite", "studio"],
+    tones: ["ash", "graphite"],
     description:
       "[Model] ([height]) is modeling a sz [size] heavyweight hoodie, the one you disappear into when the group chat gets loud. Hood up, world off. Enjoy!",
     details: placeholderDetails,
@@ -120,7 +121,7 @@ export const products: Product[] = [
     category: "Outerwear",
     price: 7998,
     sizes: apparelSizes(["XS", "S"]),
-    tones: ["studio", "graphite"],
+    tones: ["graphite", "ash"],
     description:
       "[Model] ([height]) is modeling a sz [size] nylon track jacket that has never once been near a track. Zip it to the chin and leave the normies behind. Enjoy!",
     details: placeholderDetails,
@@ -132,7 +133,7 @@ export const products: Product[] = [
     category: "Bottoms",
     price: 3998,
     sizes: apparelSizes(["M"]),
-    tones: ["graphite", "fog"],
+    tones: ["ash", "graphite"],
     description:
       "[Model] ([height]) is modeling a sz [size] ripstop short, tough enough for the pit and light enough for the heat after. Enjoy!",
     details: placeholderDetails,
@@ -144,7 +145,7 @@ export const products: Product[] = [
     category: "Outerwear",
     price: 9998,
     sizes: apparelSizes(["XS", "XXL"]),
-    tones: ["fog", "studio"],
+    tones: ["graphite", "ash"],
     description:
       "[Model] ([height]) is modeling a sz [size] panel bomber cut for the night shift. Throw it over the Night Dweller tee and you're dressed for whatever happens after dark. Enjoy!",
     details: placeholderDetails,
@@ -156,7 +157,7 @@ export const products: Product[] = [
     category: "Accessories",
     price: 1998,
     sizes: [{ label: "One size", inStock: true }],
-    tones: ["graphite", "fog"],
+    tones: ["ash", "graphite"],
     description: "One size, every head. The tag cap keeps the sun off your face and the normies guessing. Enjoy!",
     details: placeholderDetails,
   },
@@ -174,8 +175,8 @@ export type Look = { id: string; title: string; tone: Tone; photo?: Photo; produ
 const nightDweller = products[0];
 
 export const looks: Look[] = [
-  { id: "look-01", title: "Look 01", tone: "studio", photo: nightDweller.photos![1], productSlugs: [nightDweller.slug] },
-  { id: "look-02", title: "Look 02", tone: "studio", photo: nightDweller.photos![0], productSlugs: [nightDweller.slug] },
+  { id: "look-01", title: "Look 01", tone: "ash", photo: nightDweller.photos![1], productSlugs: [nightDweller.slug] },
+  { id: "look-02", title: "Look 02", tone: "ash", photo: nightDweller.photos![0], productSlugs: [nightDweller.slug] },
   { id: "look-03", title: "Look 03", tone: "graphite", productSlugs: ["heavyweight-hoodie", "utility-cargo-pant"] },
-  { id: "look-04", title: "Look 04", tone: "fog", productSlugs: ["panel-bomber", "tag-cap"] },
+  { id: "look-04", title: "Look 04", tone: "ash", productSlugs: ["panel-bomber", "tag-cap"] },
 ];

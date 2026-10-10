@@ -11,7 +11,7 @@ export async function Footer() {
   const year = await copyrightYear();
   return (
     <footer className="overflow-hidden border-t-2 border-chalk bg-void text-chalk">
-      <div className="flex flex-col gap-8 px-4 pb-6 pt-14 md:flex-row md:items-end md:justify-between md:px-6">
+      <div className="wrap flex flex-col gap-8 px-4 pb-6 pt-14 md:flex-row md:items-end md:justify-between md:px-6">
         <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-1">
           <Link href="/shop" className="flex min-h-11 min-w-11 items-center font-semibold hover:underline">
             Shop
@@ -32,7 +32,7 @@ export async function Footer() {
           </a>
         </nav>
         <div className="flex flex-col gap-1 md:items-end">
-          <p className="script text-3xl">{site.tagline}</p>
+          <p className="script text-3xl md:t-script">{site.tagline}</p>
           <p className="text-sm text-dim">
             © {year} {site.name}
           </p>
@@ -40,8 +40,8 @@ export async function Footer() {
       </div>
       <p
         aria-hidden
-        style={{ fontSize: wordmarkSize(88, 22.5) }}
-        className="display -mb-[0.08em] select-none whitespace-nowrap text-center leading-[0.8]"
+        style={{ "--wm": wordmarkSize(88, 22.5) } as React.CSSProperties}
+        className="display wordmark -mb-[0.08em] select-none whitespace-nowrap text-center leading-[0.8]"
       >
         {site.name}
       </p>

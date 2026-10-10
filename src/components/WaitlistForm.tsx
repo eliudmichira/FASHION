@@ -50,7 +50,7 @@ export function WaitlistForm() {
   if (state.kind === "done") {
     return (
       <div role="status" className="border-2 border-void p-4">
-        <p className="display text-5xl">You&apos;re on the list.</p>
+        <p className="display text-5xl md:t-d4">You&apos;re on the list.</p>
         <p className="mt-2">We&apos;ll email {email.trim()} before {site.nextDrop.name} opens.</p>
         {!state.stored && (
           <p className="mt-2 text-sm font-semibold">

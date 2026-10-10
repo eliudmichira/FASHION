@@ -46,7 +46,7 @@ function Drawer({ onClose }: { onClose: () => void }) {
         transition={{ duration: 0.45, ease: [0.7, 0, 0.2, 1] }}
       >
         <div className="flex items-center justify-between border-b-2 border-void px-4 py-3">
-          <h2 id="bag-title" className="display text-4xl">
+          <h2 id="bag-title" className="display text-4xl md:t-d4">
             Bag <span className="text-dim-studio">/ {count}</span>
           </h2>
           <button
@@ -63,7 +63,7 @@ function Drawer({ onClose }: { onClose: () => void }) {
 
           {status !== "loading" && lines.length === 0 && (
             <div className="py-12">
-              <p className="display text-6xl">Nothing in here yet.</p>
+              <p className="display text-6xl md:t-d3">Nothing in here yet.</p>
               <p className="mt-3 text-dim-studio">Pick a size on any piece and it lands here.</p>
               <Link
                 href="/shop"

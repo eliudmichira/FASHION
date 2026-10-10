@@ -104,7 +104,7 @@ export function Intro() {
         ))}
       </svg>
       <motion.p
-        className="display text-center text-[clamp(1.25rem,5vw,2.5rem)]"
+        className="display text-center text-[clamp(1.25rem,5vw,2.5rem)] md:t-d5"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.1, duration: 0 }}

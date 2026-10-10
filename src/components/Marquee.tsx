@@ -37,7 +37,7 @@ export function Marquee({ items, baseSpeed = 3 }: { items: string[]; baseSpeed?:
   return (
     <div className="overflow-hidden border-y-2 border-chalk bg-void py-4 text-chalk">
       <p className="sr-only">{items.join(". ")}</p>
-      <motion.div aria-hidden className="display flex items-center whitespace-nowrap text-[clamp(2rem,5.5vw,4.5rem)]" style={{ x }}>
+      <motion.div aria-hidden className="display flex items-center whitespace-nowrap text-[clamp(2rem,5.5vw,4.5rem)] md:t-d3" style={{ x }}>
         {[0, 1, 2, 3].map((i) => (
           <span key={i} className="flex items-center">
             {items.map((word) => (

@@ -35,7 +35,7 @@ export function ShopGrid() {
 
       {shown.length === 0 ? (
         <div className="py-20">
-          <p className="display text-6xl md:text-8xl">Nothing here in {size}.</p>
+          <p className="display text-6xl md:t-d3">Nothing here in {size}.</p>
           <p className="mt-3 text-dim">
             {category === "All" ? "Every piece" : `Every ${category.toLowerCase()} piece`} is out in that size right now.
           </p>

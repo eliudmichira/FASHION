@@ -1,10 +1,12 @@
 import Image from "next/image";
+import { Logo } from "@/components/Logo";
 import type { Photo as PhotoData, Tone } from "@/data/products";
 
+// Dark tones on purpose: stand-ins sit back so the real (light) product shots
+// are what the eye finds first.
 const toneClass: Record<Tone, string> = {
-  studio: "bg-studio text-void",
-  fog: "bg-fog text-void",
   graphite: "bg-graphite text-chalk",
+  ash: "bg-ash text-chalk",
 };
 
 type FrameProps = {
@@ -40,15 +42,10 @@ export function Placeholder({
         </span>
       ) : (
         <>
-          <span
-            aria-hidden
-            className="display pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none text-center text-[clamp(3rem,10vw,8rem)] opacity-15"
-          >
-            {code}
-          </span>
+          <Logo className="pointer-events-none absolute left-1/2 top-1/2 h-auto w-1/4 max-w-24 -translate-x-1/2 -translate-y-1/2 opacity-15" />
           <span aria-hidden className="mt-auto flex w-full items-end justify-between gap-2 p-3 text-xs font-semibold">
             <span className="border border-current px-1.5 py-0.5">{code}</span>
-            <span>Photo / {label}</span>
+            <span>Photo soon</span>
           </span>
         </>
       )}

@@ -20,11 +20,11 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 h-[var(--header-h)] border-b-2 border-chalk bg-void">
-      <div className="flex h-full items-center justify-between gap-4 px-4 md:px-6">
+      <div className="wrap flex h-full items-center justify-between gap-4 px-4 md:px-6">
         <Link href="/" className="flex min-h-11 min-w-11 items-center gap-3" aria-label={`${site.name}, home`}>
           {/* At this size the mark's line is about 2px, the same as the header rule. */}
           <Logo className="h-8 w-auto" />
-          <span className="display hidden text-lg sm:inline">{site.name}</span>
+          <span className="display hidden text-[16px] sm:inline">{site.name}</span>
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">

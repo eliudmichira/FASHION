@@ -26,7 +26,7 @@ export function ProductView({ product }: { product: Product }) {
   return (
     <div className="lg:sticky lg:top-[calc(var(--header-h)+1.5rem)]">
       <span className="inline-block border-2 border-chalk px-2 py-0.5 text-sm font-semibold">{product.code}</span>
-      <h1 className="display mt-3 text-[clamp(3.5rem,8vw,7rem)]">{product.name}</h1>
+      <h1 className="display mt-3 text-[clamp(3.5rem,8vw,7rem)] md:t-d3">{product.name}</h1>
       <p className="mt-3 text-3xl font-bold tabular-nums">{formatKsh(product.price)}</p>
       <p className="mt-4 max-w-md leading-relaxed">{product.description}</p>
 

@@ -34,7 +34,7 @@ function Intro() {
   return (
     <div className="flex w-[min(85vw,26rem)] shrink-0 flex-col justify-end lg:w-[32rem]">
       <p className="text-sm font-semibold text-dim">{site.currentDrop} / Lookbook</p>
-      <h2 id="lookbook-title" className="display mt-2 text-[clamp(4.5rem,11vw,10rem)]">
+      <h2 id="lookbook-title" className="display mt-2 text-[clamp(4.5rem,11vw,10rem)] md:t-d2">
         Worn loud.
       </h2>
       <p className="mt-4 max-w-xs text-dim">
@@ -54,7 +54,7 @@ function LookCard({ index }: { index: number }) {
         <Placeholder tone={look.tone} code={`${site.codePrefix}L0${index + 1}`} label={look.title} className="aspect-[3/4]" />
       )}
       <figcaption className="pt-3">
-        <p className="display text-3xl">{look.title}</p>
+        <p className="display text-3xl md:t-d5">{look.title}</p>
         <ul className="mt-1">
           {look.productSlugs.map((slug) => {
             const p = getProduct(slug);
@@ -116,14 +116,16 @@ function PinnedTrack() {
   return (
     <div ref={outer} style={{ height: `calc(100dvh + ${distance}px)` }} className="relative">
       <div className="sticky top-0 flex h-dvh flex-col justify-center overflow-hidden pt-[var(--header-h)]">
-        <motion.div ref={track} style={{ x }} className="flex w-max items-end gap-8 px-6">
+        <motion.div ref={track} style={{ x }} className="gutter-x flex w-max min-w-full items-end gap-8">
           <Intro />
           {looks.map((look, i) => (
             <LookCard key={look.id} index={i} />
           ))}
         </motion.div>
-        <div className="mx-6 mt-8 h-0.5 bg-chalk/20">
-          <motion.div className="h-full bg-chalk" style={{ width: progress }} />
+        <div className="gutter-x mt-8">
+          <div className="h-0.5 bg-chalk/20">
+            <motion.div className="h-full bg-chalk" style={{ width: progress }} />
+          </div>
         </div>
       </div>
     </div>

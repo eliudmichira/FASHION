@@ -14,21 +14,23 @@ const opens = new Intl.DateTimeFormat("en-KE", {
 export function DropSection() {
   return (
     <section id="drop" aria-labelledby="drop-title" className="on-studio bg-studio px-4 py-16 text-void md:px-6 md:py-24">
-      <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-        <h2 id="drop-title" className="display text-[clamp(3.5rem,14vw,12rem)]">
-          {site.nextDrop.name}
-        </h2>
-        <p className="max-w-xs pb-2 font-semibold md:text-right">
-          Opens {opens} EAT
-          {site.preview && <span className="block text-sm">(placeholder date)</span>}
-        </p>
-      </div>
-      <div className="mt-8">
-        <Countdown opensAt={site.nextDrop.opensAt} />
-      </div>
-      <div className="mt-12 grid gap-8 md:grid-cols-[1fr_1.2fr] md:items-end">
-        <p className="display text-4xl md:text-6xl">Get the link to {site.nextDrop.name} before it goes public.</p>
-        <WaitlistForm />
+      <div className="wrap">
+        <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+          <h2 id="drop-title" className="display text-[clamp(3.5rem,14vw,12rem)] md:t-d1">
+            {site.nextDrop.name}
+          </h2>
+          <p className="max-w-xs pb-2 font-semibold md:text-right">
+            Opens {opens} EAT
+            {site.preview && <span className="block text-sm">(placeholder date)</span>}
+          </p>
+        </div>
+        <div className="mt-8">
+          <Countdown opensAt={site.nextDrop.opensAt} />
+        </div>
+        <div className="mt-12 grid gap-8 md:grid-cols-[1fr_1.2fr] md:items-end">
+          <p className="display text-4xl md:t-d4">Get the link to {site.nextDrop.name} before it goes public.</p>
+          <WaitlistForm />
+        </div>
       </div>
     </section>
   );

@@ -5,8 +5,8 @@
   --color-void: #0c0c10;
   --color-chalk: #ffffff;
   --color-studio: #d4d6e2;
-  --color-fog: #b4b7c6;
   --color-graphite: #1e1e25;
+  --color-ash: #2a2a33;
   --color-dim: #9a9aa6;
   --color-dim-studio: #4a4b55;
 
@@ -49,6 +49,83 @@ body {
   font-weight: 400;
   text-transform: uppercase;
   line-height: 0.9;
+}
+
+/* Display scale for tablet and desktop (phones keep their own sizes).
+   Tiny5 is drawn on 8 pixels per em, so every size lands on a multiple of 8px:
+   each font pixel then covers whole screen pixels and the letters stay crisp.
+   Sizes grow with the screen but stop at a ceiling, so big screens get a clear
+   hierarchy instead of every heading getting huge. */
+@utility t-d1 {
+  font-size: clamp(64px, 9vw, 128px);
+  @supports (font-size: round(down, 1vw, 8px)) {
+    font-size: clamp(64px, round(down, 9vw, 8px), 128px);
+  }
+}
+@utility t-d2 {
+  font-size: clamp(48px, 6.5vw, 96px);
+  @supports (font-size: round(down, 1vw, 8px)) {
+    font-size: clamp(48px, round(down, 6.5vw, 8px), 96px);
+  }
+}
+@utility t-d3 {
+  font-size: clamp(40px, 5.5vw, 80px);
+  @supports (font-size: round(down, 1vw, 8px)) {
+    font-size: clamp(40px, round(down, 5.5vw, 8px), 80px);
+  }
+}
+@utility t-d4 {
+  font-size: clamp(32px, 3.6vw, 56px);
+  @supports (font-size: round(down, 1vw, 8px)) {
+    font-size: clamp(32px, round(down, 3.6vw, 8px), 56px);
+  }
+}
+@utility t-d5 {
+  font-size: clamp(24px, 2.6vw, 40px);
+  @supports (font-size: round(down, 1vw, 8px)) {
+    font-size: clamp(24px, round(down, 2.6vw, 8px), 40px);
+  }
+}
+
+/* Jacquarda Bastarda is drawn on 13 pixels per em: same idea, 13px steps. */
+@utility t-script {
+  font-size: clamp(26px, 3.4vw, 52px);
+  @supports (font-size: round(down, 1vw, 13px)) {
+    font-size: clamp(26px, round(down, 3.4vw, 13px), 52px);
+  }
+}
+@utility t-script-l {
+  font-size: clamp(39px, 6vw, 104px);
+  @supports (font-size: round(down, 1vw, 13px)) {
+    font-size: clamp(39px, round(down, 6vw, 13px), 104px);
+  }
+}
+
+/* Full-width wordmark: fluid size from --wm (set per name length), snapped to
+   8px steps from tablet up. */
+.wordmark {
+  font-size: var(--wm);
+}
+@media (width >= 48rem) {
+  @supports (font-size: round(down, 1vw, 8px)) {
+    .wordmark {
+      font-size: round(down, var(--wm), 8px);
+    }
+  }
+}
+
+/* Content stops widening past this, so big monitors don't stretch the layout.
+   Bands that are meant to run edge to edge (ticker, lookbook, footer mark)
+   stay outside it. */
+.wrap {
+  max-width: 1600px;
+  margin-inline: auto;
+}
+
+/* Side padding for full-bleed bands (the pinned lookbook) so their content
+   starts on the same line as the max-width content above and below. */
+.gutter-x {
+  padding-inline: max(1.5rem, calc((100% - 1600px) / 2 + 1.5rem));
 }
 
 /* Pixel blackletter, kept for the "Grow To Fly" line only. */
