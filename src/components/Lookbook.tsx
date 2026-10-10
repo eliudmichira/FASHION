@@ -34,11 +34,11 @@ function Intro() {
   return (
     <div className="flex w-[min(85vw,26rem)] shrink-0 flex-col justify-end lg:w-[32rem]">
       <p className="text-sm font-semibold text-dim">{site.currentDrop} / Lookbook</p>
-      <h2 id="lookbook-title" className="display mt-2 text-[clamp(4.5rem,11vw,10rem)] md:t-d2">
-        Worn loud.
+      <h2 id="lookbook-title" className="display mt-2 text-[clamp(4rem,9vw,8rem)] md:t-d2">
+        Complete the look.
       </h2>
       <p className="mt-4 max-w-xs text-dim">
-        {looks.length} looks from {site.currentDrop}. Every piece is linked, so you can shop straight off the outfit.
+        Styled on Mona (5&apos;7, wearing size Small). Tap to shop the Night Dweller Baby Tee straight off the outfit.
       </p>
     </div>
   );
