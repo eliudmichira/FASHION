@@ -209,7 +209,7 @@ export const looks: Look[] = [
     title: "Look 03",
     tone: "graphite",
     photo: {
-      src: "/images/looks/night-dweller-back.webp",
+      src: "/images/looks/look-03.webp",
       alt: "The Night Dweller Baby Tee from behind, worn cropped with low-rise blue jeans, the Classofinfinitty mark across the back",
       label: "Look 03",
     },
@@ -220,9 +220,31 @@ export const looks: Look[] = [
     title: "Look 04",
     tone: "ash",
     photo: {
-      src: "/images/looks/night-dweller-front.webp",
+      src: "/images/looks/look-04.webp",
       alt: "The Night Dweller Baby Tee worn cropped with low-rise blue jeans, the Skele print on the front",
       label: "Look 04",
+    },
+    productSlugs: [nightDweller.slug],
+  },
+  {
+    id: "look-05",
+    title: "Look 05",
+    tone: "graphite",
+    photo: {
+      src: "/images/looks/look-05.webp",
+      alt: "The Night Dweller Baby Tee from behind, worn cropped with washed black jeans, the Classofinfinitty mark across the back",
+      label: "Look 05",
+    },
+    productSlugs: [nightDweller.slug],
+  },
+  {
+    id: "look-06",
+    title: "Look 06",
+    tone: "ash",
+    photo: {
+      src: "/images/looks/look-06.webp",
+      alt: "The Night Dweller Baby Tee worn cropped with washed black jeans, the Skele print on the front",
+      label: "Look 06",
     },
     productSlugs: [nightDweller.slug],
   },
