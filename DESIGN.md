@@ -1,6 +1,6 @@
 # Design direction
 
-Brand name: not decided yet. The site shows a `BRAND NAME` placeholder (set in `src/data/site.ts`).
+Brand name: **Classofinfinitty** (set in `src/data/site.ts`). Domain: duncanzz.com.
 
 Owner's brief (chosen in chat): **Street Kinetic**. Unisex streetwear, prices in KSh, photos to follow (placeholders until then). Bold condensed type, one acid accent, fast snappy motion, marquee tickers, slight grain.
 

@@ -58,7 +58,7 @@ export function Intro() {
           exit={{ y: "-100%" }}
           transition={{ duration: 0.7, ease: [0.7, 0, 0.2, 1] }}
         >
-          <div className="display flex" style={{ fontSize: `clamp(3rem, ${wordmarkSize(80, 20)}, 18rem)` }}>
+          <div className="display flex" style={{ fontSize: `clamp(2rem, ${wordmarkSize(84, 20)}, 18rem)` }}>
             {wordmarkLetters.map((letter, i) => (
               <span key={i} className="overflow-hidden">
                 <motion.span

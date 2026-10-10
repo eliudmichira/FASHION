@@ -1,7 +1,7 @@
 export const site = {
-  // Placeholder until the brand name is decided. Shows in the wordmark,
-  // header, footer, marquee and page titles. Wordmarks resize to fit any length.
-  name: "BRAND NAME",
+  // Shows in the wordmark, header, footer, marquee and page titles.
+  // Display type is uppercased by CSS; wordmarks resize to fit the length.
+  name: "Classofinfinitty",
   // Prefix on product codes (XX/001). Placeholder; usually the brand's initials.
   codePrefix: "XX",
   domain: "duncanzz.com",

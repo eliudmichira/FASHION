@@ -1,6 +1,6 @@
 # duncanzz.com
 
-Storefront for a unisex streetwear label (brand name to be confirmed). Next.js 16, Tailwind 4, Motion and Lenis.
+Storefront for Classofinfinitty, a unisex streetwear label. Next.js 16, Tailwind 4, Motion and Lenis.
 Design direction lives in [`DESIGN.md`](DESIGN.md).
 
 ## Run it
@@ -25,7 +25,7 @@ The bag is a slide-out drawer, saved in the visitor's browser.
 ## Where to change things
 
 - **Products and prices:** `src/data/products.ts`. Keep every price ending in 998.
-- **Brand name and product code prefix:** `name` and `codePrefix` in `src/data/site.ts` (both placeholders now).
+- **Brand name and product code prefix:** `name` and `codePrefix` in `src/data/site.ts` (the `XX` code prefix is still a placeholder).
 - **Drop names and the Drop 02 date:** `src/data/site.ts`.
 - **Placeholder strip:** set `preview: false` in `src/data/site.ts` once real content is in.
 - **Photos:** each grey block is a `<Placeholder>`. Swap it for `next/image` with the real shot.
