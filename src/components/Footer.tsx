@@ -2,9 +2,8 @@ import Link from "next/link";
 import { site } from "@/data/site";
 import { wordmarkSize } from "@/lib/wordmark";
 
-// Cached at build time; the year only needs to be as fresh as the last deploy.
-async function copyrightYear() {
-  "use cache";
+// Determined at build time; the year only needs to be as fresh as the last deploy.
+function copyrightYear() {
   return new Date().getFullYear();
 }
 
