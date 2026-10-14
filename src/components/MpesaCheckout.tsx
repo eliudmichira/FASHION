@@ -189,8 +189,8 @@ export function MpesaCheckout({ onPaid }: { onPaid: (order: PaidOrder) => void }
           onChange={(e) => setAddress(e.target.value)}
         />
       </label>
-      <p className="text-sm text-dim-studio">
-        Includes {formatKsh(site.deliveryFee)} delivery. We&apos;ll call your number to arrange it.
+      <p className="border-l-2 border-void/40 pl-2.5 text-xs text-dim-studio leading-relaxed">
+        <strong>Delivery note:</strong> {formatKsh(site.deliveryFee)} covers standard Nairobi delivery. For orders outside Nairobi, our team will contact you by phone or WhatsApp to confirm delivery options and any additional charges before dispatch.
       </p>
       {step.error && (
         <p role="alert" className="border-2 border-void px-3 py-2 text-sm font-semibold">

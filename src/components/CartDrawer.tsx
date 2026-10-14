@@ -181,14 +181,19 @@ function Drawer({ onClose }: { onClose: () => void }) {
                 </p>
               )}
               {lines.length > 0 ? (
-                <dl className="grid grid-cols-[1fr_auto] items-baseline gap-y-1">
-                  <dt>Subtotal</dt>
-                  <dd className="text-right tabular-nums">{formatKsh(subtotal)}</dd>
-                  <dt>Delivery</dt>
-                  <dd className="text-right tabular-nums">{formatKsh(site.deliveryFee)}</dd>
-                  <dt className="font-semibold">Total</dt>
-                  <dd className="text-right text-3xl font-bold tabular-nums">{formatKsh(subtotal + site.deliveryFee)}</dd>
-                </dl>
+                <>
+                  <dl className="grid grid-cols-[1fr_auto] items-baseline gap-y-1">
+                    <dt>Subtotal</dt>
+                    <dd className="text-right tabular-nums">{formatKsh(subtotal)}</dd>
+                    <dt>Delivery</dt>
+                    <dd className="text-right tabular-nums">{formatKsh(site.deliveryFee)}</dd>
+                    <dt className="font-semibold">Total</dt>
+                    <dd className="text-right text-3xl font-bold tabular-nums">{formatKsh(subtotal + site.deliveryFee)}</dd>
+                  </dl>
+                  <p className="mt-3 border-l-2 border-void/40 pl-2.5 text-xs text-dim-studio leading-relaxed">
+                    <strong>Delivery note:</strong> {formatKsh(site.deliveryFee)} covers standard Nairobi delivery. For orders outside Nairobi, our team will contact you by phone or WhatsApp to confirm delivery options and any additional charges before dispatch.
+                  </p>
+                </>
               ) : (
                 <div className="flex items-baseline justify-between">
                   <span className="font-semibold">Subtotal</span>

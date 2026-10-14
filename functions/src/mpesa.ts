@@ -69,7 +69,7 @@ async function accessToken(cfg: MpesaConfig, fetchImpl: Fetch): Promise<string> 
   });
   if (!res.ok) {
     const text = await res.text().catch(() => "");
-    throw new Error(`Daraja auth failed: HTTP ${res.status} ${text}`.trim());
+    throw new Error(`Daraja auth failed: HTTP ${res.status} (env: ${cfg.env}, url: ${BASE_URL[cfg.env]}) ${text}`.trim());
   }
   const body = (await res.json()) as { access_token?: string; expires_in?: string | number };
   if (!body.access_token) throw new Error("Daraja auth returned no token");
